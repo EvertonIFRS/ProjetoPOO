@@ -19,10 +19,13 @@ public class Eficiencia extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
         
         Scene scene = new Scene(root);
         
+        stage.setOnCloseRequest(e -> {
+            System.exit(0);
+        });
         stage.setScene(scene);
         stage.show();
     }

@@ -5,11 +5,13 @@
  */
 package eficiencia;
 
+import static eficiencia.Auxiliar.ler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,15 +36,10 @@ public class FXMLVisualizarController implements Initializable {
     void setArquivo(File selectedFile) {
         if (selectedFile.exists()) {
             try {
-                try (BufferedReader br = new BufferedReader(new FileReader(selectedFile))) {
-                    String linha;
-
-                    do {
-                        linha = br.readLine();
-                        if (linha != null) {
-                            System.out.println(linha);
-                        }
-                    } while (linha != null);
+                ArrayList<String> linhas = ler(selectedFile);
+                
+                for (String linha : linhas) {
+                    System.out.println(linha);
                 }
             } catch (IOException ex) {
                 Alert dialogo = new Alert(Alert.AlertType.ERROR);

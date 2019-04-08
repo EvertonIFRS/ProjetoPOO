@@ -5,6 +5,7 @@
  */
 package eficiencia;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,6 +50,7 @@ public class FXMLRegisterInController implements Initializable {
             Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
             stage1.hide();
             try {
+                Auxiliar.gravar_usuario(new File("usuarios.txt"), new Usuario(NewUser.getText(), Confirm.getText()));
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));
                 Parent root = loader.load();
                 FXML_LoginController controladorLogin = loader.getController();

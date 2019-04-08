@@ -5,8 +5,10 @@
  */
 package eficiencia;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,22 +75,26 @@ public class FXML_LoginController implements Initializable {
         if (User.getText().isEmpty() || Password.getText().isEmpty()) {
 
         } else {
-            Usuario user = new Usuario(User.getText(), Password.getText());
-            
             try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+                Usuario user = new Usuario(User.getText(), Password.getText());
+                ArrayList<Usuario> users = Auxiliar.ler_usuarios(new File("usuarios.txt"));
 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
+                if (users.contains(user)) {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
 
-                stage.setOnCloseRequest(ee -> {
-                    stage.hide();
-                });
-                stage.setScene(scene);
-                stage.show();
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
+
             }
         }
     }

@@ -14,8 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -25,26 +28,30 @@ import javafx.stage.Stage;
  */
 public class FXML_LoginController implements Initializable {
 
+    @FXML
+    TextField User;
+
+    @FXML
+    PasswordField Password;
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
     @FXML
     public void FuncaoRegistro(ActionEvent e) {
-    }
-
-    @FXML
-    public void FuncaoCheck(ActionEvent e) {
-
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FXMLRegisterIn.fxml"));
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -55,9 +62,40 @@ public class FXML_LoginController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-
+            ex.printStackTrace();
         }
 
+    }
+
+    @FXML
+    public void FuncaoCheck(ActionEvent e) {
+
+        if (User.getText().isEmpty() || Password.getText().isEmpty()) {
+
+        } else {
+            Usuario user = new Usuario(User.getText(), Password.getText());
+            
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    void setUsuario(String login, String senha) {
+        User.setText(login);
+        Password.setText(senha);
     }
 
 }

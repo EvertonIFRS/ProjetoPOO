@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -43,9 +44,14 @@ public class FXMLRegisterInController implements Initializable {
     @FXML
     public void FuncaoCreateUser(ActionEvent e) {
         if (NewUser.getText().isEmpty()) {
-
-        } else if (!Confirm.getText().equals(NewPassword.getText())) {
-
+           Alert dialogo = new Alert(Alert.AlertType.WARNING, "O campo de Usuário deve ser Preenchido!");
+           dialogo.showAndWait();
+        }else if(NewPassword.getText().isEmpty() || Confirm.getText().isEmpty()){
+                 Alert dialogo = new Alert(Alert.AlertType.WARNING, "Os campos de Senhas devem ser Preenchidos!");
+           dialogo.showAndWait();
+              }else if (!Confirm.getText().equals(NewPassword.getText())) {
+                  Alert dialogo = new Alert(Alert.AlertType.WARNING, "As Senhas devem ser Iguais!");
+                  dialogo.showAndWait();
         } else {
             Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
             stage1.hide();

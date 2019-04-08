@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -73,7 +74,8 @@ public class FXML_LoginController implements Initializable {
     public void FuncaoCheck(ActionEvent e) {
 
         if (User.getText().isEmpty() || Password.getText().isEmpty()) {
-
+           Alert dialogo = new Alert(Alert.AlertType.WARNING, "Campos Importantes estão em Branco!");
+           dialogo.showAndWait();
         } else {
             try {
                 Usuario user = new Usuario(User.getText(), Password.getText());

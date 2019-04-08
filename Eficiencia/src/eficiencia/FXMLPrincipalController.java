@@ -44,24 +44,6 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private void FuncaoImport(ActionEvent e) {
-        /*try {
-           Parent root;
-           root = FXMLLoader.load(getClass().getResource("FXMLImport.fxml"));
-           
-           Scene scene = new Scene(root);
-           Stage stage = new Stage();
-           
-           stage.setOnCloseRequest(ee -> {
-               stage.hide();
-           });
-              stage.setScene(scene);
-              stage.show();
-        
-        
-        }catch (IOException ex) {
-            ex.printStackTrace();
-        } 
-         */
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().addAll(

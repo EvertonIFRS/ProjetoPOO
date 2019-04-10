@@ -39,7 +39,7 @@ public class FXMLHistoricoController implements Initializable {
         stage1.hide();
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();

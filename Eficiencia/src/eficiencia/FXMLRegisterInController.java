@@ -75,5 +75,26 @@ public class FXMLRegisterInController implements Initializable {
             }
         }
     }
+    
+    @FXML
+    private void FuncaoVoltar(ActionEvent e) {
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setOnCloseRequest(ee -> {
+                stage.hide();
+            });
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
 }

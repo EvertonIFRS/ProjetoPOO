@@ -15,8 +15,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,10 +41,31 @@ public class FXMLVisualizarController implements Initializable {
         if (selectedFile.exists()) {
             try {
                 ArrayList<String> linhas = ler(selectedFile);
-                
-                for (String linha : linhas) {
-                    System.out.println(linha);
+                /*
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                    
+                     for (String linha : linhas) {
+                          System.out.println(linha);
+                     }
+                });
+                  stage.setScene(scene);
+                  stage.show();
+                } catch (IOException ex) {
+                        ex.printStackTrace();
                 }
+                */
+                for (String linha : linhas) {
+                          System.out.println(linha);
+                }
+               
             } catch (IOException ex) {
                 Alert dialogo = new Alert(Alert.AlertType.ERROR);
                 dialogo.setContentText("Não foi possível ler o Arquivo de dados energéticos!");

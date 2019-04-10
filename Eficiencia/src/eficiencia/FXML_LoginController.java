@@ -72,7 +72,6 @@ public class FXML_LoginController implements Initializable {
 
     @FXML
     public void FuncaoCheck(ActionEvent e) {
-
         if (User.getText().isEmpty() || Password.getText().isEmpty()) {
            Alert dialogo = new Alert(Alert.AlertType.WARNING, "Campos Importantes estão em Branco!");
            dialogo.showAndWait();
@@ -80,7 +79,23 @@ public class FXML_LoginController implements Initializable {
             try {
                 Usuario user = new Usuario(User.getText(), Password.getText());
                 ArrayList<Usuario> users = Auxiliar.ler_usuarios(new File("usuarios.txt"));
+                if(!users.contains(user)){
+                    Alert dialogo = new Alert(Alert.AlertType.WARNING, "Usuário Inexistente, se Registre antes!");
+                    dialogo.showAndWait();
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+                    
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
 
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
+                }
+                Stage stage1 = (Stage) ((Node)e.getSource()).getScene().getWindow();
+                stage1.hide();
                 if (users.contains(user)) {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

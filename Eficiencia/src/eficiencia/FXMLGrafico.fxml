@@ -17,6 +17,12 @@
             <CheckBox layoutX="477.0" layoutY="79.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico A" />
             <Button fx:id="Voltar" layoutX="505.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="75.0" text="Back!" />
             <Button fx:id="Fazer" layoutX="430.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoGerar" prefHeight="25.0" prefWidth="75.0" text="Do" />
+            <CheckBox layoutX="29.0" layoutY="225.0" mnemonicParsing="false" text="Variavel A" />
+            <CheckBox layoutX="29.0" layoutY="252.0" mnemonicParsing="false" text="Variavel B" />
+            <CheckBox layoutX="29.0" layoutY="280.0" mnemonicParsing="false" text="Variavel C" />
+            <CheckBox layoutX="29.0" layoutY="308.0" mnemonicParsing="false" text="Variavel D" />
+            <CheckBox layoutX="29.0" layoutY="336.0" mnemonicParsing="false" text="Variavel E" />
+            <CheckBox layoutX="29.0" layoutY="365.0" mnemonicParsing="false" text="Variavel F" />
          </children>
       </Pane>
    </children>

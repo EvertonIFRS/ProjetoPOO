@@ -32,6 +32,24 @@ public class FXMLGraficoController implements Initializable {
         // TODO
     }    
     
+    @FXML
+    private void FuncaoGerar(ActionEvent e) throws IOException{
+        try{
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("FXML"));
+            
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.setOnCloseRequest(ee -> {
+               stage.hide(); 
+            });
+            stage.setScene(scene);
+            stage.show();
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
     
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
@@ -45,11 +63,11 @@ public class FXMLGraficoController implements Initializable {
             Stage stage = new Stage();
 
             stage.setOnCloseRequest(ee -> {
-                stage.hide();
+                 stage.hide();
             });
             stage.setScene(scene);
             stage.show();
-        } catch (IOException ex) {
+        } catch(IOException ex) {
             ex.printStackTrace();
         }
     }

@@ -6,20 +6,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="212.0" prefWidth="314.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="eficiencia.FXMLRegisterInController">
+<AnchorPane id="AnchorPane" prefHeight="212.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLRegisterInController">
    <children>
       <Pane prefHeight="200.0" prefWidth="288.0">
          <children>
             <Pane layoutX="-1.0" prefHeight="212.0" prefWidth="314.0">
                <children>
                   <Button fx:id="CreateUser" layoutX="210.0" layoutY="173.0" mnemonicParsing="false" onAction="#FuncaoCreateUser" prefHeight="25.0" prefWidth="90.0" text="Create" />
-                  <Label layoutX="14.0" layoutY="24.0" prefHeight="17.0" prefWidth="165.0" text="Informe o Nome de Usuario!" />
-                  <Label layoutX="14.0" layoutY="67.0" prefHeight="17.0" prefWidth="165.0" text="Informe sua Senha!" />
-                  <Label layoutX="14.0" layoutY="120.0" prefHeight="17.0" prefWidth="149.0" text="Confirme sua Senha!" />
-                  <TextField fx:id="NewUser" layoutX="14.0" layoutY="41.0" />
-                  <PasswordField fx:id="NewPassword" layoutX="14.0" layoutY="84.0" />
-                  <PasswordField fx:id="Confirm" layoutX="14.0" layoutY="137.0" />
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="165.0" text="Informe o Nome de Usuario!" />
+                  <Label layoutX="14.0" layoutY="77.0" prefHeight="17.0" prefWidth="165.0" text="Informe sua Senha!" />
+                  <Label layoutX="14.0" layoutY="141.0" prefHeight="17.0" prefWidth="149.0" text="Confirme sua Senha!" />
+                  <TextField fx:id="NewUser" layoutX="14.0" layoutY="31.0" />
+                  <PasswordField fx:id="NewPassword" layoutX="14.0" layoutY="94.0" />
+                  <PasswordField fx:id="Confirm" layoutX="14.0" layoutY="161.0" />
+                  <Button fx:id="Voltar" layoutX="210.0" layoutY="137.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="90.0" text="Back!" />
+                  <Label layoutX="14.0" layoutY="56.0" prefHeight="17.0" prefWidth="238.0" text="O nome deve ter no minimo 8 letras" />
+                  <Label layoutX="14.0" layoutY="119.0" prefHeight="17.0" prefWidth="238.0" text="A senha deve ter no mínimo 10 caracteres" />
                </children>
             </Pane>
          </children>

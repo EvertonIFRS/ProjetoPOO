@@ -43,6 +43,7 @@ public class FXMLRegisterInController implements Initializable {
 
     @FXML
     public void FuncaoCreateUser(ActionEvent e) {
+      // Desenvolver seguração para registro de novos usuarios!!!!!!!!
         if (NewUser.getText().isEmpty()) {
            Alert dialogo = new Alert(Alert.AlertType.WARNING, "O campo de Usuário deve ser Preenchido!");
            dialogo.showAndWait();

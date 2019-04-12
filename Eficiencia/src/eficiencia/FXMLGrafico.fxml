@@ -6,6 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLGraficoController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="eficiencia.FXMLGraficoController">
+   <children>
+      <Pane fx:id="G4" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <CheckBox fx:id="G1" layoutX="29.0" layoutY="79.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico X" />
+            <CheckBox fx:id="G2" layoutX="193.0" layoutY="79.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Y" />
+            <CheckBox fx:id="G3" layoutX="323.0" layoutY="79.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Z" />
+            <CheckBox layoutX="477.0" layoutY="79.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico A" />
+            <Button fx:id="Voltar" layoutX="505.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="75.0" text="Back!" />
+            <Button fx:id="Fazer" layoutX="430.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoGerar" prefHeight="25.0" prefWidth="75.0" text="Do" />
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

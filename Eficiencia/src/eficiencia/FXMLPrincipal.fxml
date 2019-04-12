@@ -6,10 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="eficiencia.FXMLPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLPrincipalController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Pane prefHeight="251.0" prefWidth="320.0">
+      <Pane fx:id="painel" prefHeight="251.0" prefWidth="320.0">
          <children>
             <Button fx:id="Import" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#FuncaoImport" prefHeight="25.0" prefWidth="85.0" text="Importar" />
             <Button fx:id="Visualizar" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#FuncaoVisualizar" prefHeight="25.0" prefWidth="85.0" text="Visualizar" />
@@ -18,6 +18,7 @@
             <Button fx:id="Imprimir" layoutX="14.0" layoutY="158.0" mnemonicParsing="false" onAction="#FuncaoImprimir" prefHeight="25.0" prefWidth="85.0" text="Imprmir" />
             <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="301.0" text="Coleta de Dados Energeticos" />
             <DatePicker fx:id="Date" layoutX="118.0" layoutY="31.0" onAction="#FuncaoDate" />
+            <Button fx:id="Voltar" onAction="#FuncaoVoltar" layoutX="14.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Back!" />
          </children>
       </Pane>
     </children>

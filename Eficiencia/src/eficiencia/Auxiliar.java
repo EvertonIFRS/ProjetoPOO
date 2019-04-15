@@ -36,6 +36,22 @@ public class Auxiliar {
         }
         return linhas;
     }
+    
+    public static ArrayList<String> Gravar(File arquivo) throws FileNotFoundException, IOException {
+        ArrayList<String> linhas = new ArrayList();
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            
+            do {
+                linha = br.readLine();
+                if(linha != null) {
+                    linhas.add(linha);
+                }
+            } while(linha != null);
+        }
+        return linhas;
+    }
 
     public static void gravar_usuario(File arquivo, Usuario user) throws IOException {
         try (FileWriter fw = new FileWriter(arquivo, true);

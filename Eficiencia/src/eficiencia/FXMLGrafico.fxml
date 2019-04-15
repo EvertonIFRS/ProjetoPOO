@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="eficiencia.FXMLGraficoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLGraficoController">
    <children>
       <Pane fx:id="G4" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -23,6 +22,8 @@
             <CheckBox layoutX="29.0" layoutY="308.0" mnemonicParsing="false" text="Variavel D" />
             <CheckBox layoutX="29.0" layoutY="336.0" mnemonicParsing="false" text="Variavel E" />
             <CheckBox layoutX="29.0" layoutY="365.0" mnemonicParsing="false" text="Variavel F" />
+            <CheckBox layoutX="29.0" layoutY="200.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Variavel G" />
+            <CheckBox layoutX="29.0" layoutY="174.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Variavel H" />
          </children>
       </Pane>
    </children>

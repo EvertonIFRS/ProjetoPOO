@@ -46,7 +46,7 @@ public class FXMLVisualizarController implements Initializable {
                 ArrayList<String> linhas = ler(selectedFile);
                 try {
                     Parent root;
-                    root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("FXMLVisualizar.fxml"));
 
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
@@ -78,26 +78,4 @@ public class FXMLVisualizarController implements Initializable {
             dialogo.showAndWait();
         }
     }
-    
-    @FXML
-    private void FuncaoVoltar(ActionEvent e) {
-        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.hide();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
 }

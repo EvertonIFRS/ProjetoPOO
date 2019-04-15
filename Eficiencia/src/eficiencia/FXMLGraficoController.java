@@ -36,7 +36,7 @@ public class FXMLGraficoController implements Initializable {
     private void FuncaoGerar(ActionEvent e) throws IOException{
         try{
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXML"));
+            root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
             
             Scene scene = new Scene(root);
             Stage stage = new Stage();

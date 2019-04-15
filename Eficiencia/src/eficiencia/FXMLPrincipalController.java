@@ -98,7 +98,7 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoGraf(ActionEvent e) {
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLGraf.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();

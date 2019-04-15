@@ -44,7 +44,6 @@ public class FXMLVisualizarController implements Initializable {
         if (selectedFile.exists()) {
             try {
                 ArrayList<String> linhas = ler(selectedFile);
-                /*
                 try {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
@@ -64,7 +63,6 @@ public class FXMLVisualizarController implements Initializable {
                 } catch (IOException ex) {
                         ex.printStackTrace();
                 }
-                */
                 for (String linha : linhas) {
                           System.out.println(linha);
                 }

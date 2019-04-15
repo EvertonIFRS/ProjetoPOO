@@ -83,7 +83,7 @@ public class FXML_LoginController implements Initializable {
                     Alert dialogo = new Alert(Alert.AlertType.WARNING, "Usuário Inexistente, se Registre antes!");
                     dialogo.showAndWait();
                     Parent root;
-                    root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("FXMLRegisterIn.fxml"));
                     
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();

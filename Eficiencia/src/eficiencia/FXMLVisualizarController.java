@@ -5,21 +5,13 @@
  */
 package eficiencia;
 
-import static eficiencia.Auxiliar.ler;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -43,34 +35,20 @@ public class FXMLVisualizarController implements Initializable {
     void setArquivo(File selectedFile) {
         if (selectedFile.exists()) {
             try {
-                ArrayList<String> linhas = ler(selectedFile);
-                try {
-                    Parent root;
-                    root = FXMLLoader.load(getClass().getResource("FXMLVisualizar.fxml"));
-
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-
-                    stage.setOnCloseRequest(ee -> {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLVisualizar.fxml"));
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                
+                stage.setOnCloseRequest(ee -> {
                     stage.hide();
                     
-                     for (String linha : linhas) {
-                          System.out.println(linha);
-                     }
                 });
-                  stage.setScene(scene);
-                  stage.show();
-                } catch (IOException ex) {
-                        ex.printStackTrace();
-                }
-                for (String linha : linhas) {
-                          System.out.println(linha);
-                }
-               
+                stage.setScene(scene);
+                stage.show();
             } catch (IOException ex) {
-                Alert dialogo = new Alert(Alert.AlertType.ERROR);
-                dialogo.setContentText("Não foi possível ler o Arquivo de dados energéticos!");
-                dialogo.showAndWait();
+                ex.printStackTrace();
             }
         } else {
             Alert dialogo = new Alert(Alert.AlertType.ERROR);

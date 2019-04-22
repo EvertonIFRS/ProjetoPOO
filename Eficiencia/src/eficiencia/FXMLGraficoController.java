@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -31,6 +33,34 @@ public class FXMLGraficoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private ImageView image01;
+    
+    @FXML
+    private ImageView image02;
+    
+    @FXML
+    private ImageView image03;
+    
+    @FXML
+    private ImageView image04;
+    
+   image1 = new Image(FXMLGraficoController.class.getResourceAsStream("Dispersao.jpg"));
+    
+    image2 = new Image(FXMLGraficoController.class.getResourceAsStream("Pizza.jpg"));
+    
+    image3 = new Image(FXMLGraficoController.class.getResourceAsStream("Coluna.jpg"));
+    
+    image4 = new Image(FXMLGraficoController.class.getResourceAsStream("Linha.jpg"));
+    
+    image01.setImage(image1);
+    
+    image02.setImage(image2);
+    
+    image03.setImage(image3);
+    
+    image04.setImage(image4);
     
     @FXML
     private void FuncaoGerar(ActionEvent e) throws IOException{

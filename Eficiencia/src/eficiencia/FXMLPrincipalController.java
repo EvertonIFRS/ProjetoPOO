@@ -8,7 +8,6 @@ package eficiencia;
 import java.io.File;
 import static java.lang.reflect.Array.get;
 import java.net.URL;
-import static java.nio.file.Paths.get;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,15 +15,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.LocalDate;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  *
@@ -36,6 +34,9 @@ public class FXMLPrincipalController implements Initializable {
     private Button Import;
 
     File selectedFile;
+    
+    @FXML
+    private DatePicker datepicker;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -134,21 +135,7 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private void FuncaoDate(ActionEvent e) {
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLDate.fxml"));
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        LocalDate date = datepicker.getValue();
     }
     
     @FXML

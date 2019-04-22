@@ -8,18 +8,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLVisualizarController">
    <children>
-      <TableView fx:id="TableView" prefHeight="400.0" prefWidth="752.0">
+      <TableView fx:id="InfoTable" prefHeight="400.0" prefWidth="752.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Data" />
-          <TableColumn prefWidth="75.0" text="Hora" />
-            <TableColumn prefWidth="75.0" text="PT" />
-            <TableColumn prefWidth="75.0" text="ST" />
-            <TableColumn prefWidth="75.0" text="QT" />
-            <TableColumn prefWidth="75.0" text="FPT" />
-            <TableColumn prefWidth="75.0" text="EA" />
-            <TableColumn prefWidth="75.0" text="ER" />
-            <TableColumn prefWidth="75.0" text="EAT" />
-            <TableColumn prefWidth="75.0" text="D" />
+          <TableColumn fx:id="Data" prefWidth="75.0" text="Data" />
+          <TableColumn fx:id="Horario" prefWidth="75.0" text="Hora" />
+            <TableColumn fx:id="PT" prefWidth="75.0" text="PT" />
+            <TableColumn fx:id="ST" prefWidth="75.0" text="ST" />
+            <TableColumn fx:id="QT" prefWidth="75.0" text="QT" />
+            <TableColumn fx:id="FPT" prefWidth="75.0" text="FPT" />
+            <TableColumn fx:id="EA" prefWidth="75.0" text="EA" />
+            <TableColumn fx:id="ER" prefWidth="75.0" text="ER" />
+            <TableColumn fx:id="EAT" prefWidth="75.0" text="EAT" />
+            <TableColumn fx:id="D" prefWidth="75.0" text="D" />
         </columns>
       </TableView>
    </children>

@@ -66,6 +66,10 @@ public class FXMLPrincipalController implements Initializable {
                 Parent root = loader.load();
                 FXMLVisualizarController controladorVisualizar = loader.getController();
                 controladorVisualizar.setArquivo(selectedFile);
+                Scene sc= new Scene(root);
+                Stage s = new Stage();
+                s.setScene(sc);
+                s.show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

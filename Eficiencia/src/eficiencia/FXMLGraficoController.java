@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -31,56 +32,75 @@ public class FXMLGraficoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
+        Image image1 = new Image(FXMLGraficoController.class.getResourceAsStream("dispersao.jpg"));
+        Image image2 = new Image(FXMLGraficoController.class.getResourceAsStream("pizza.jpg"));
+        Image image3 = new Image(FXMLGraficoController.class.getResourceAsStream("colunas.jpg"));
+        Image image4 = new Image(FXMLGraficoController.class.getResourceAsStream("linhas.jpg"));
+
+        image01.setImage(image1);
+        image02.setImage(image2);
+        image03.setImage(image3);
+        image04.setImage(image4);
+        
+        G1.setOnAction(e -> {
+            G2.setSelected(!G1.isSelected());
+            G3.setSelected(!G1.isSelected());
+            G4.setSelected(!G1.isSelected());            
+        });
+        G2.setOnAction(e -> {
+            G1.setSelected(!G2.isSelected());
+            G3.setSelected(!G2.isSelected());
+            G4.setSelected(!G2.isSelected());            
+        });
+        G3.setOnAction(e -> {
+            G2.setSelected(!G3.isSelected());
+            G1.setSelected(!G3.isSelected());
+            G4.setSelected(!G3.isSelected());            
+        });
+        G4.setOnAction(e -> {
+            G2.setSelected(!G4.isSelected());
+            G3.setSelected(!G4.isSelected());
+            G1.setSelected(!G4.isSelected());            
+        });
+    }
+
     @FXML
     private ImageView image01;
-    
+
     @FXML
     private ImageView image02;
-    
+
     @FXML
     private ImageView image03;
-    
+
     @FXML
     private ImageView image04;
-    
-   image1 = new Image(FXMLGraficoController.class.getResourceAsStream("Dispersao.jpg"));
-    
-    image2 = new Image(FXMLGraficoController.class.getResourceAsStream("Pizza.jpg"));
-    
-    image3 = new Image(FXMLGraficoController.class.getResourceAsStream("Coluna.jpg"));
-    
-    image4 = new Image(FXMLGraficoController.class.getResourceAsStream("Linha.jpg"));
-    
-    image01.setImage(image1);
-    
-    image02.setImage(image2);
-    
-    image03.setImage(image3);
-    
-    image04.setImage(image4);
-    
+
     @FXML
-    private void FuncaoGerar(ActionEvent e) throws IOException{
-        try{
+    private CheckBox G1, G2, G3, G4;
+
+    @FXML
+    private void FuncaoGerar(ActionEvent e) throws IOException {
+        
+        
+        try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
-            
+
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            
+
             stage.setOnCloseRequest(ee -> {
-               stage.hide(); 
+                stage.hide();
             });
             stage.setScene(scene);
             stage.show();
-        } catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-    
+
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -93,11 +113,11 @@ public class FXMLGraficoController implements Initializable {
             Stage stage = new Stage();
 
             stage.setOnCloseRequest(ee -> {
-                 stage.hide();
+                stage.hide();
             });
             stage.setScene(scene);
             stage.show();
-        } catch(IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

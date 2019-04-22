@@ -9,12 +9,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLGraficoController">
    <children>
-      <Pane fx:id="G4" prefHeight="400.0" prefWidth="600.0">
+      <Pane fx:id="G" prefHeight="400.0" prefWidth="600.0">
          <children>
             <CheckBox fx:id="G1" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="138.0" text="Grafico Dispersão" />
             <CheckBox fx:id="G2" layoutX="181.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Pizza" />
             <CheckBox fx:id="G3" layoutX="314.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="122.0" text="Grafico Colunas" />
-            <CheckBox layoutX="468.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Linhas" />
+            <CheckBox fx:id="G4" layoutX="468.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Linhas" />
             <Button fx:id="Voltar" layoutX="505.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="75.0" text="Back!" />
             <Button fx:id="Fazer" layoutX="430.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoGerar" prefHeight="25.0" prefWidth="75.0" text="Do" />
             <CheckBox layoutX="29.0" layoutY="225.0" mnemonicParsing="false" text="Variavel QT" />

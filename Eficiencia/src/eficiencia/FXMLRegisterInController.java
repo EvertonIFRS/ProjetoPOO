@@ -49,13 +49,13 @@ public class FXMLRegisterInController implements Initializable {
            dialogo.showAndWait();
         }else if(NewPassword.getText().isEmpty() || Confirm.getText().isEmpty()){
                  Alert dialogo = new Alert(Alert.AlertType.WARNING, "Os campos de Senhas devem ser Preenchidos!");
-           dialogo.showAndWait();
+                 dialogo.showAndWait();
               }else if (!Confirm.getText().equals(NewPassword.getText())) {
                   Alert dialogo = new Alert(Alert.AlertType.WARNING, "As Senhas devem ser Iguais!");
                   dialogo.showAndWait();
         } else {
             Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage1.hide();
+            stage1.close();
             try {
                 Auxiliar.gravar_usuario(new File("usuarios.txt"), new Usuario(NewUser.getText(), Confirm.getText()));
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));

@@ -51,7 +51,7 @@ public class FXML_LoginController implements Initializable {
     @FXML
     public void FuncaoRegistro(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.hide();
+        stage1.close();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLRegisterIn.fxml"));
@@ -95,7 +95,7 @@ public class FXML_LoginController implements Initializable {
                     stage.show();
                 }
                 Stage stage1 = (Stage) ((Node)e.getSource()).getScene().getWindow();
-                stage1.hide();
+                stage1.close();
                 if (users.contains(user)) {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

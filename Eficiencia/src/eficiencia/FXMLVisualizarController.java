@@ -82,23 +82,7 @@ public class FXMLVisualizarController implements Initializable {
 
             InfoData.addAll(dados);
             InfoTable.setItems(InfoData);
-
-            /* try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXMLVisualizar.fxml"));
-
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-
-                stage.setOnCloseRequest(ee -> {
-                    stage.hide();
-
-                });
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }*/
+            
         } else {
             Alert dialogo = new Alert(Alert.AlertType.ERROR);
             dialogo.setContentText("Arquivo de dados energéticos não encontrado!");

@@ -60,6 +60,8 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private void FuncaoVisualizar(ActionEvent e) {
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
         if (selectedFile != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLVisualizar.fxml"));
@@ -85,6 +87,8 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private void FuncaoHistorico(ActionEvent e) {
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
@@ -104,6 +108,8 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private void FuncaoGraf(ActionEvent e) {
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
@@ -123,6 +129,8 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private void FuncaoImprimir(ActionEvent e) {
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLImprimir.fxml"));

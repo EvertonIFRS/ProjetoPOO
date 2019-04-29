@@ -43,40 +43,46 @@ public class FXMLRegisterInController implements Initializable {
 
     @FXML
     public void FuncaoCreateUser(ActionEvent e) {
-      // Desenvolver seguração para registro de novos usuarios!!!!!!!!
-        if (NewUser.getText().isEmpty()) {
-           Alert dialogo = new Alert(Alert.AlertType.WARNING, "O campo de Usuário deve ser Preenchido!");
-           dialogo.showAndWait();
-        }else if(NewPassword.getText().isEmpty() || Confirm.getText().isEmpty()){
-                 Alert dialogo = new Alert(Alert.AlertType.WARNING, "Os campos de Senhas devem ser Preenchidos!");
-                 dialogo.showAndWait();
-              }else if (!Confirm.getText().equals(NewPassword.getText())) {
-                  Alert dialogo = new Alert(Alert.AlertType.WARNING, "As Senhas devem ser Iguais!");
-                  dialogo.showAndWait();
-        } else {
-            Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage1.close();
-            try {
-                Auxiliar.gravar_usuario(new File("usuarios.txt"), new Usuario(NewUser.getText(), Confirm.getText()));
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));
-                Parent root = loader.load();
-                FXML_LoginController controladorLogin = loader.getController();
+        if ((NewPassword.getText().length() >= 8) && (NewPassword.getText().length() <= 10)
+                && (NewUser.getText().length() >= 8) && (NewUser.getText().length() <= 10)) {
+            if (NewUser.getText().isEmpty()) {
+                Alert dialogo = new Alert(Alert.AlertType.WARNING, "O campo de Usuário deve ser Preenchido!");
+                dialogo.showAndWait();
+            } else if (NewPassword.getText().isEmpty() || Confirm.getText().isEmpty()) {
+                Alert dialogo = new Alert(Alert.AlertType.WARNING, "Os campos de Senhas devem ser Preenchidos!");
+                dialogo.showAndWait();
+            } else if (!Confirm.getText().equals(NewPassword.getText())) {
+                Alert dialogo = new Alert(Alert.AlertType.WARNING, "As Senhas devem ser Iguais!");
+                dialogo.showAndWait();
+            } else {
+                // String senha = MD5(NewPassword.getText());
+                Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage1.close();
+                try {
+                    Auxiliar.gravar_usuario(new File("usuarios.txt"), new Usuario(NewUser.getText(), Confirm.getText()));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));
+                    Parent root = loader.load();
+                    FXML_LoginController controladorLogin = loader.getController();
 
-                controladorLogin.setUsuario(NewUser.getText(), NewPassword.getText());
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
+                    controladorLogin.setUsuario(NewUser.getText(), NewPassword.getText());
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
 
-                stage.setOnCloseRequest(ee -> {
-                    stage.hide();
-                });
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
+        } else {
+            Alert dialogo = new Alert(Alert.AlertType.WARNING, "Requisitos de Segurança não Atingidos!");
+            dialogo.showAndWait();
         }
     }
-    
+
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();

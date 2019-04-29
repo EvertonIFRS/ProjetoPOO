@@ -153,6 +153,10 @@ public class FXMLGraficoController implements Initializable {
 
     @FXML
     private CheckBox PT, ST, QT, FPT, EA, ER, EAT, D;
+    
+    // X = Tipo_Grafico(G1, G2, G3, G4);
+    
+    // Y = Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
 
     @FXML
     private void FuncaoGerar(ActionEvent e) throws IOException {
@@ -178,7 +182,7 @@ public class FXMLGraficoController implements Initializable {
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.close();
+        stage1.hide();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
@@ -196,3 +200,16 @@ public class FXMLGraficoController implements Initializable {
         }
     }
 }
+/*
+    private static class X {
+
+        public X() {
+        }
+    }
+
+    private static class Y {
+
+        public Y() {
+        }
+    }
+*/

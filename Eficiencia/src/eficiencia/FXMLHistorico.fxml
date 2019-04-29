@@ -12,10 +12,115 @@
          <children>
             <Button fx:id="Voltar" layoutX="525.0" layoutY="322.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="61.0" text="Back" />
             <Button fx:id="Do" layoutX="525.0" layoutY="355.0" mnemonicParsing="false" onAction="#FuncaoDo" prefHeight="25.0" prefWidth="61.0" text="Done" />
-            <Slider layoutX="14.0" layoutY="238.0" />
-            <Slider layoutX="14.0" layoutY="302.0" />
-            <Label layoutX="14.0" layoutY="207.0" prefHeight="17.0" prefWidth="140.0" text="Defina Tempo Mínimo" />
-            <Label layoutX="14.0" layoutY="272.0" prefHeight="17.0" prefWidth="140.0" text="Defina Tempo Maximo" />
+            <DatePicker layoutX="24.0" layoutY="34.0" />
+            <TableView layoutX="70.0" layoutY="81.0" prefHeight="93.0" prefWidth="157.0">
+              <columns>
+                <TableColumn fx:id="PTMM" prefWidth="104.0" text="PT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                      <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+              </columns>
+            </TableView>
+            <TableView layoutX="227.0" layoutY="81.0" prefHeight="93.0" prefWidth="157.0">
+               <columns>
+                  <TableColumn fx:id="STMM" prefWidth="156.0" text="ST">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <TableView layoutX="384.0" layoutY="81.0" prefHeight="93.0" prefWidth="157.0">
+               <columns>
+                  <TableColumn fx:id="QTMM" prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <TableView layoutX="70.0" layoutY="174.0" prefHeight="93.0" prefWidth="157.0">
+               <columns>
+                  <TableColumn fx:id="EAMM" prefWidth="156.0" text="EA">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <TableView layoutX="227.0" layoutY="174.0" prefHeight="93.0" prefWidth="157.0">
+               <columns>
+                  <TableColumn prefWidth="156.0" text="ER">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn fx:id="ERMM" prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <TableView layoutX="384.0" layoutY="174.0" prefHeight="93.0" prefWidth="157.0">
+               <columns>
+                  <TableColumn fx:id="FPTMM" prefWidth="156.0" text="FPT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn prefWidth="156.0" text="QT">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Máx" />
+                        <TableColumn prefWidth="75.0" text="Min" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableView>
          </children>
       </Pane>
    </children>

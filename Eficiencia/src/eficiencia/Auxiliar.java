@@ -102,4 +102,11 @@ public class Auxiliar {
         }
         return null;
     }
+    /*
+   public static String Funcao_Selecao(G1, G3, G4){
+       
+       
+       
+   }
+   */    
 }

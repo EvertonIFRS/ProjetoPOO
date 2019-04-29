@@ -5,6 +5,7 @@
  */
 package eficiencia;
 
+// import static eficiencia.Auxiliar.Funcao_Selecao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,32 +35,22 @@ public class FXMLGraficoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         Image image1 = new Image(FXMLGraficoController.class.getResourceAsStream("dispersao.jpg"));
-        Image image2 = new Image(FXMLGraficoController.class.getResourceAsStream("pizza.jpg"));
         Image image3 = new Image(FXMLGraficoController.class.getResourceAsStream("colunas.jpg"));
         Image image4 = new Image(FXMLGraficoController.class.getResourceAsStream("linhas.jpg"));
 
         image01.setImage(image1);
-        image02.setImage(image2);
         image03.setImage(image3);
         image04.setImage(image4);
 
         G1.setOnAction(e -> {
-            G2.setSelected(!G1.isSelected());
             G3.setSelected(!G1.isSelected());
             G4.setSelected(!G1.isSelected());
         });
-        G2.setOnAction(e -> {
-            G1.setSelected(!G2.isSelected());
-            G3.setSelected(!G2.isSelected());
-            G4.setSelected(!G2.isSelected());
-        });
         G3.setOnAction(e -> {
-            G2.setSelected(!G3.isSelected());
             G1.setSelected(!G3.isSelected());
             G4.setSelected(!G3.isSelected());
         });
         G4.setOnAction(e -> {
-            G2.setSelected(!G4.isSelected());
             G3.setSelected(!G4.isSelected());
             G1.setSelected(!G4.isSelected());
         });
@@ -146,10 +137,10 @@ public class FXMLGraficoController implements Initializable {
     }
 
     @FXML
-    private ImageView image01, image02, image03, image04;
+    private ImageView image01, image03, image04;
 
     @FXML
-    private CheckBox G1, G2, G3, G4;
+    private CheckBox G1, G3, G4;
 
     @FXML
     private CheckBox PT, ST, QT, FPT, EA, ER, EAT, D;
@@ -158,10 +149,11 @@ public class FXMLGraficoController implements Initializable {
     private void FuncaoGerar(ActionEvent e) throws IOException {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        try {
-            // X = Tipo_Grafico(G1, G2, G3, G4);
-            // Y = Tipo_Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
+        /*try {
             
+            String X = Funcao_Selecao(G1, G3, G4);
+            String Y = Funcao_Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
+             
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
 
@@ -175,7 +167,7 @@ public class FXMLGraficoController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
+        }*/
     }
 
     @FXML
@@ -199,17 +191,3 @@ public class FXMLGraficoController implements Initializable {
         }
     }
 }
-/*
-    private static class X {
-
-        public X() {
-        }
-    }
-
-    private static class Y {
-
-        public Y() {
-        }
-    }
-}
- */

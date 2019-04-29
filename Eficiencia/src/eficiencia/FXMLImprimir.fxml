@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="eficiencia.FXMLImprimirController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLImprimirController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Button fx:id="Voltar" layoutX="523.0" layoutY="322.0" mnemonicParsing="false" onAction="#FuncaoVoltar" text="Back!" />
+            <Button fx:id="Voltar" layoutX="519.0" layoutY="322.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="75.0" text="Back!" />
+            <Button fx:id="C_PDF" layoutX="519.0" layoutY="354.0" mnemonicParsing="false" onAction="#Funcao_PDF" text="Create PDF" />
+            <ImageView fx:id="Image_01" fitHeight="400.0" fitWidth="512.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

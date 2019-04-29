@@ -12,8 +12,7 @@
       <Pane fx:id="G" prefHeight="400.0" prefWidth="600.0">
          <children>
             <CheckBox fx:id="G1" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="138.0" text="Grafico Dispersão" />
-            <CheckBox fx:id="G2" layoutX="181.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Pizza" />
-            <CheckBox fx:id="G3" layoutX="314.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="122.0" text="Grafico Colunas" />
+            <CheckBox fx:id="G3" layoutX="239.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="122.0" text="Grafico Colunas" />
             <CheckBox fx:id="G4" layoutX="468.0" layoutY="112.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="Grafico Linhas" />
             <Button fx:id="Voltar" layoutX="505.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="75.0" text="Back!" />
             <Button fx:id="Fazer" layoutX="430.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoGerar" prefHeight="25.0" prefWidth="75.0" text="Do" />
@@ -27,7 +26,7 @@
             <CheckBox fx:id="PT" layoutX="29.0" layoutY="174.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Variavel PT" />
             <ImageView fx:id="image01" fitHeight="112.0" fitWidth="138.0" layoutX="11.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="image02" fitHeight="112.0" fitWidth="155.0" layoutX="153.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="image03" fitHeight="112.0" fitWidth="138.0" layoutX="306.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="image03" fitHeight="112.0" fitWidth="138.0" layoutX="231.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="image04" fitHeight="112.0" fitWidth="122.0" layoutX="457.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>

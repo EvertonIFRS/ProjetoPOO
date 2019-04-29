@@ -37,7 +37,7 @@ public class Auxiliar {
         }
         return linhas;
     }
-    
+
     public static ArrayList<String> ler_Usuario(File arquivo) throws FileNotFoundException, IOException {
         ArrayList<String> linhas = new ArrayList();
 
@@ -53,18 +53,18 @@ public class Auxiliar {
         }
         return linhas;
     }
-    
-   public static void gravar(File arquivo, Informacoes info) throws FileNotFoundException, IOException {
-       
-       try (FileWriter fw = new FileWriter(arquivo, true);
+
+    public static void gravar(File arquivo, Informacoes info) throws FileNotFoundException, IOException {
+
+        try (FileWriter fw = new FileWriter(arquivo, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter out = new PrintWriter(bw)) {
-            out.println(info.getData() + "\t" + info.getHorario() + "\t" 
-                        + info.getPT() + "\t" + info.getST() + "\t" 
-                        + info.getQT() + "\t" + info.getFPT() + "\t"
-                        + info.getEA() + "\t" + info.getER() + "\t"
-                        + info.getEAT() + "\t" + info.getD() + "\n");
-           
+            out.println(info.getData() + "\t" + info.getHorario() + "\t"
+                    + info.getPT() + "\t" + info.getST() + "\t"
+                    + info.getQT() + "\t" + info.getFPT() + "\t"
+                    + info.getEA() + "\t" + info.getER() + "\t"
+                    + info.getEAT() + "\t" + info.getD() + "\n");
+
         }
     }
 
@@ -81,9 +81,25 @@ public class Auxiliar {
         ArrayList<String> linhas = ler_Usuario(arquivo);
 
         for (String linha : linhas) {
-            usuarios.add(new Usuario(linha.split("\t")[0], linha.split("\t")[1]));
+            if (!linha.isEmpty()) {
+                usuarios.add(new Usuario(linha.split("\t")[0], linha.split("\t")[1]));
+            }
         }
         return usuarios;
     }
 
+    public static String MD5(String NewPassword) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(NewPassword.getBytes());
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+        }
+        return null;
+    }
 }

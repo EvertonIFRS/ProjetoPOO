@@ -5,6 +5,7 @@
  */
 package eficiencia;
 
+import static eficiencia.Auxiliar.MD5;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -73,32 +74,42 @@ public class FXML_LoginController implements Initializable {
     @FXML
     public void FuncaoCheck(ActionEvent e) {
         if (User.getText().isEmpty() || Password.getText().isEmpty()) {
-           Alert dialogo = new Alert(Alert.AlertType.WARNING, "Campos Importantes estão em Branco!");
-           dialogo.showAndWait();
+            Alert dialogo = new Alert(Alert.AlertType.WARNING, "Campos Importantes estão em Branco!");
+            dialogo.showAndWait();
         } else {
             try {
                 Usuario user = new Usuario(User.getText(), Password.getText());
                 ArrayList<Usuario> users = Auxiliar.ler_usuarios(new File("usuarios.txt"));
-                if(!users.contains(user)){
+
+                boolean encontrou = false, senha_correta = false;
+
+                for (Usuario u : users) {
+                    if (u.getLogin().equals(user.getLogin())) {
+                        encontrou = true;
+                        if (MD5(Password.getText()).equals(u.getSenha())) {
+                            Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                            stage1.close();
+                            senha_correta = true;
+                            Parent root;
+                            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                            Scene scene = new Scene(root);
+                            Stage stage = new Stage();
+
+                            stage.setOnCloseRequest(ee -> {
+                                stage.hide();
+                            });
+                            stage.setScene(scene);
+                            stage.show();
+                            break;
+                        }
+                    }
+                }
+                if (!encontrou) {
                     Alert dialogo = new Alert(Alert.AlertType.WARNING, "Usuário Inexistente, se Registre antes!");
                     dialogo.showAndWait();
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLRegisterIn.fxml"));
-                    
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-
-                    stage.setOnCloseRequest(ee -> {
-                        stage.hide();
-                    });
-                    stage.setScene(scene);
-                    stage.show();
-                }
-                Stage stage1 = (Stage) ((Node)e.getSource()).getScene().getWindow();
-                stage1.close();
-                if (users.contains(user)) {
-                    Parent root;
-                    root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
 
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
@@ -108,6 +119,11 @@ public class FXML_LoginController implements Initializable {
                     });
                     stage.setScene(scene);
                     stage.show();
+                } else {
+                    if (!senha_correta) {
+                        Alert dialogo = new Alert(Alert.AlertType.WARNING, "Senha incorreta. Verifique sua senha!");
+                        dialogo.showAndWait();
+                    }
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();

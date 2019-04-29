@@ -66,9 +66,6 @@ public class Usuario {
         if (!Objects.equals(this.Login, other.Login)) {
             return false;
         }
-        if (!Objects.equals(this.Senha, other.Senha)) {
-            return false;
-        }
         return true;
     }
     

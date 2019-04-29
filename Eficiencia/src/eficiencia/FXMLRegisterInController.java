@@ -5,6 +5,7 @@
  */
 package eficiencia;
 
+import static eficiencia.Auxiliar.MD5;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -55,16 +56,16 @@ public class FXMLRegisterInController implements Initializable {
                 Alert dialogo = new Alert(Alert.AlertType.WARNING, "As Senhas devem ser Iguais!");
                 dialogo.showAndWait();
             } else {
-                // String senha = MD5(NewPassword.getText());
+                String senha = Auxiliar.MD5(NewPassword.getText());
                 Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage1.close();
                 try {
-                    Auxiliar.gravar_usuario(new File("usuarios.txt"), new Usuario(NewUser.getText(), Confirm.getText()));
+                    Auxiliar.gravar_usuario(new File("usuarios.txt"), new Usuario(NewUser.getText(), senha));
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));
                     Parent root = loader.load();
                     FXML_LoginController controladorLogin = loader.getController();
 
-                    controladorLogin.setUsuario(NewUser.getText(), NewPassword.getText());
+                    controladorLogin.setUsuario(NewUser.getText(), senha);
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
 

@@ -73,7 +73,7 @@ public class FXMLGraficoController implements Initializable {
             EAT.setSelected(!PT.isSelected());
             D.setSelected(!PT.isSelected());
         });
-        
+
         ST.setOnAction(e -> {
             PT.setSelected(!ST.isSelected());
             QT.setSelected(!ST.isSelected());
@@ -83,7 +83,7 @@ public class FXMLGraficoController implements Initializable {
             EAT.setSelected(!ST.isSelected());
             D.setSelected(!ST.isSelected());
         });
-        
+
         QT.setOnAction(e -> {
             PT.setSelected(!QT.isSelected());
             ST.setSelected(!QT.isSelected());
@@ -93,7 +93,7 @@ public class FXMLGraficoController implements Initializable {
             EAT.setSelected(!QT.isSelected());
             D.setSelected(!QT.isSelected());
         });
-        
+
         FPT.setOnAction(e -> {
             ST.setSelected(!FPT.isSelected());
             QT.setSelected(!FPT.isSelected());
@@ -103,7 +103,7 @@ public class FXMLGraficoController implements Initializable {
             EAT.setSelected(!FPT.isSelected());
             D.setSelected(!FPT.isSelected());
         });
-        
+
         EA.setOnAction(e -> {
             ST.setSelected(!EA.isSelected());
             QT.setSelected(!EA.isSelected());
@@ -113,7 +113,7 @@ public class FXMLGraficoController implements Initializable {
             EAT.setSelected(!EA.isSelected());
             D.setSelected(!EA.isSelected());
         });
-        
+
         ER.setOnAction(e -> {
             ST.setSelected(!ER.isSelected());
             QT.setSelected(!ER.isSelected());
@@ -123,7 +123,7 @@ public class FXMLGraficoController implements Initializable {
             EAT.setSelected(!ER.isSelected());
             D.setSelected(!ER.isSelected());
         });
-        
+
         EAT.setOnAction(e -> {
             ST.setSelected(!EAT.isSelected());
             QT.setSelected(!EAT.isSelected());
@@ -133,7 +133,7 @@ public class FXMLGraficoController implements Initializable {
             PT.setSelected(!EAT.isSelected());
             D.setSelected(!EAT.isSelected());
         });
-        
+
         D.setOnAction(e -> {
             ST.setSelected(!D.isSelected());
             QT.setSelected(!D.isSelected());
@@ -153,16 +153,15 @@ public class FXMLGraficoController implements Initializable {
 
     @FXML
     private CheckBox PT, ST, QT, FPT, EA, ER, EAT, D;
-    
-    // X = Tipo_Grafico(G1, G2, G3, G4);
-    
-    // Y = Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
 
     @FXML
     private void FuncaoGerar(ActionEvent e) throws IOException {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
         try {
+            // X = Tipo_Grafico(G1, G2, G3, G4);
+            // Y = Tipo_Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
+            
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
 
@@ -212,4 +211,5 @@ public class FXMLGraficoController implements Initializable {
         public Y() {
         }
     }
-*/
+}
+ */

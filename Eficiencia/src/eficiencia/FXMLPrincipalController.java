@@ -34,7 +34,7 @@ public class FXMLPrincipalController implements Initializable {
     private Button Import;
 
     File selectedFile;
-    
+
     @FXML
     private DatePicker datepicker;
 
@@ -64,13 +64,13 @@ public class FXMLPrincipalController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLVisualizar.fxml"));
                 Parent root = loader.load();
-                
+
                 FXMLVisualizarController controladorVisualizar = loader.getController();
                 controladorVisualizar.setArquivo(selectedFile);
-                
+
                 Scene sc = new Scene(root);
                 Stage s = new Stage();
-                
+
                 s.setScene(sc);
                 s.show();
             } catch (IOException ex) {
@@ -144,7 +144,7 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoDate(ActionEvent e) {
         LocalDate date = datepicker.getValue();
     }
-    
+
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();

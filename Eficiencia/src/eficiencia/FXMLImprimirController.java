@@ -36,7 +36,7 @@ public class FXMLImprimirController implements Initializable {
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.hide();
+        stage1.close();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

@@ -42,48 +42,122 @@ public class FXMLGraficoController implements Initializable {
         image02.setImage(image2);
         image03.setImage(image3);
         image04.setImage(image4);
-        
+
         G1.setOnAction(e -> {
             G2.setSelected(!G1.isSelected());
             G3.setSelected(!G1.isSelected());
-            G4.setSelected(!G1.isSelected());            
+            G4.setSelected(!G1.isSelected());
         });
         G2.setOnAction(e -> {
             G1.setSelected(!G2.isSelected());
             G3.setSelected(!G2.isSelected());
-            G4.setSelected(!G2.isSelected());            
+            G4.setSelected(!G2.isSelected());
         });
         G3.setOnAction(e -> {
             G2.setSelected(!G3.isSelected());
             G1.setSelected(!G3.isSelected());
-            G4.setSelected(!G3.isSelected());            
+            G4.setSelected(!G3.isSelected());
         });
         G4.setOnAction(e -> {
             G2.setSelected(!G4.isSelected());
             G3.setSelected(!G4.isSelected());
-            G1.setSelected(!G4.isSelected());            
+            G1.setSelected(!G4.isSelected());
+        });
+
+        PT.setOnAction(e -> {
+            ST.setSelected(!PT.isSelected());
+            QT.setSelected(!PT.isSelected());
+            FPT.setSelected(!PT.isSelected());
+            EA.setSelected(!PT.isSelected());
+            ER.setSelected(!PT.isSelected());
+            EAT.setSelected(!PT.isSelected());
+            D.setSelected(!PT.isSelected());
+        });
+        
+        ST.setOnAction(e -> {
+            PT.setSelected(!ST.isSelected());
+            QT.setSelected(!ST.isSelected());
+            FPT.setSelected(!ST.isSelected());
+            EA.setSelected(!ST.isSelected());
+            ER.setSelected(!ST.isSelected());
+            EAT.setSelected(!ST.isSelected());
+            D.setSelected(!ST.isSelected());
+        });
+        
+        QT.setOnAction(e -> {
+            PT.setSelected(!QT.isSelected());
+            ST.setSelected(!QT.isSelected());
+            FPT.setSelected(!QT.isSelected());
+            EA.setSelected(!QT.isSelected());
+            ER.setSelected(!QT.isSelected());
+            EAT.setSelected(!QT.isSelected());
+            D.setSelected(!QT.isSelected());
+        });
+        
+        FPT.setOnAction(e -> {
+            ST.setSelected(!FPT.isSelected());
+            QT.setSelected(!FPT.isSelected());
+            PT.setSelected(!FPT.isSelected());
+            EA.setSelected(!FPT.isSelected());
+            ER.setSelected(!FPT.isSelected());
+            EAT.setSelected(!FPT.isSelected());
+            D.setSelected(!FPT.isSelected());
+        });
+        
+        EA.setOnAction(e -> {
+            ST.setSelected(!EA.isSelected());
+            QT.setSelected(!EA.isSelected());
+            FPT.setSelected(!EA.isSelected());
+            PT.setSelected(!EA.isSelected());
+            ER.setSelected(!EA.isSelected());
+            EAT.setSelected(!EA.isSelected());
+            D.setSelected(!EA.isSelected());
+        });
+        
+        ER.setOnAction(e -> {
+            ST.setSelected(!ER.isSelected());
+            QT.setSelected(!ER.isSelected());
+            FPT.setSelected(!ER.isSelected());
+            EA.setSelected(!ER.isSelected());
+            PT.setSelected(!ER.isSelected());
+            EAT.setSelected(!ER.isSelected());
+            D.setSelected(!ER.isSelected());
+        });
+        
+        EAT.setOnAction(e -> {
+            ST.setSelected(!EAT.isSelected());
+            QT.setSelected(!EAT.isSelected());
+            FPT.setSelected(!EAT.isSelected());
+            EA.setSelected(!EAT.isSelected());
+            ER.setSelected(!EAT.isSelected());
+            PT.setSelected(!EAT.isSelected());
+            D.setSelected(!EAT.isSelected());
+        });
+        
+        D.setOnAction(e -> {
+            ST.setSelected(!D.isSelected());
+            QT.setSelected(!D.isSelected());
+            FPT.setSelected(!D.isSelected());
+            EA.setSelected(!D.isSelected());
+            ER.setSelected(!D.isSelected());
+            EAT.setSelected(!D.isSelected());
+            PT.setSelected(!D.isSelected());
         });
     }
 
     @FXML
-    private ImageView image01;
-
-    @FXML
-    private ImageView image02;
-
-    @FXML
-    private ImageView image03;
-
-    @FXML
-    private ImageView image04;
+    private ImageView image01, image02, image03, image04;
 
     @FXML
     private CheckBox G1, G2, G3, G4;
 
     @FXML
+    private CheckBox PT, ST, QT, FPT, EA, ER, EAT, D;
+
+    @FXML
     private void FuncaoGerar(ActionEvent e) throws IOException {
-        
-        
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.hide();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
@@ -104,7 +178,7 @@ public class FXMLGraficoController implements Initializable {
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.hide();
+        stage1.close();
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

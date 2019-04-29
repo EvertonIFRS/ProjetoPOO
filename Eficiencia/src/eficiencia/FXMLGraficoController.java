@@ -56,13 +56,15 @@ public class FXMLGraficoController implements Initializable {
         });
 
         PT.setOnAction(e -> {
-            ST.setSelected(!PT.isSelected());
-            QT.setSelected(!PT.isSelected());
-            FPT.setSelected(!PT.isSelected());
-            EA.setSelected(!PT.isSelected());
-            ER.setSelected(!PT.isSelected());
-            EAT.setSelected(!PT.isSelected());
-            D.setSelected(!PT.isSelected());
+            if (!PT.isSelected()) {
+                ST.setSelected(!PT.isSelected());
+                QT.setSelected(!PT.isSelected());
+                FPT.setSelected(!PT.isSelected());
+                EA.setSelected(!PT.isSelected());
+                ER.setSelected(!PT.isSelected());
+                EAT.setSelected(!PT.isSelected());
+                D.setSelected(!PT.isSelected());
+            }
         });
 
         ST.setOnAction(e -> {
@@ -149,10 +151,10 @@ public class FXMLGraficoController implements Initializable {
     private void FuncaoGerar(ActionEvent e) throws IOException {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        /*try {
+        try {
             
-            String X = Funcao_Selecao(G1, G3, G4);
-            String Y = Funcao_Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
+            // String X = Funcao_Selecao(G1, G3, G4);
+            // String Y = Funcao_Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
              
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
@@ -167,7 +169,7 @@ public class FXMLGraficoController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
-        }*/
+        }
     }
 
     @FXML

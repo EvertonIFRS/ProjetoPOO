@@ -12,8 +12,12 @@
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
             <Button fx:id="Voltar" layoutX="519.0" layoutY="322.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="75.0" text="Back!" />
-            <Button fx:id="C_PDF" layoutX="519.0" layoutY="354.0" mnemonicParsing="false" onAction="#Funcao_PDF" text="Create PDF" />
+            <Button fx:id="Print" layoutX="519.0" layoutY="354.0" mnemonicParsing="false" onAction="#FuncaoPDF" prefHeight="25.0" prefWidth="75.0" text="Print!" />
             <ImageView fx:id="Image_01" fitHeight="400.0" fitWidth="512.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="Imagem_Boleto" fitHeight="392.0" fitWidth="512.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="Text01" layoutX="93.0" layoutY="61.0" />
+            <TextField fx:id="Text02" layoutX="93.0" layoutY="95.0" />
+            <TextField fx:id="Text03" layoutX="93.0" layoutY="129.0" />
          </children>
       </Pane>
    </children>

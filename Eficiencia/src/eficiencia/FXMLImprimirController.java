@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -29,12 +31,38 @@ public class FXMLImprimirController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    
+
+        Image Imagem = new Image(FXMLImprimirController.class.getResourceAsStream("BoletoLuz.jpg"));
+        
+        Imagem_Boleto.setImage(Imagem);
+    }
+
+    @FXML
+    private ImageView Imagem_Boleto;
+
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.close();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setOnCloseRequest(ee -> {
+                stage.hide();
+            });
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void FuncaoPDF(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
         try {

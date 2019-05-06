@@ -14,11 +14,11 @@
          <children>
             <Label layoutX="29.0" layoutY="40.0" text="User:" />
             <Label layoutX="28.0" layoutY="70.0" text="Pasaword:" />
+            <TextField fx:id="User" layoutX="95.0" layoutY="36.0" prefHeight="25.0" prefWidth="149.0" />
          </children></Pane>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Button layoutX="243.0" layoutY="152.0" mnemonicParsing="false" onAction="#FuncaoCheck" text="Check!" />
-      <TextField fx:id="User" layoutX="94.0" layoutY="35.0" text="joe" />
-      <PasswordField fx:id="Password" layoutX="94.0" layoutY="63.0" text="111" />
+      <PasswordField fx:id="Password" layoutX="94.0" layoutY="63.0" />
       <Button fx:id="Registro" layoutX="94.0" layoutY="100.0" mnemonicParsing="false" onAction="#FuncaoRegistro" text="Register in" textFill="#5b0eeb" />
     </children>
 </AnchorPane>

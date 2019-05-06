@@ -6,7 +6,6 @@
 package eficiencia;
 
 import java.io.File;
-import static java.lang.reflect.Array.get;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +20,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -30,6 +31,18 @@ import javafx.stage.Stage;
  */
 public class FXMLPrincipalController implements Initializable {
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        Image image1 = new Image(FXMLPrincipalController.class.getResourceAsStream("ImageMain.jpg"));
+
+        ImageMain.setImage(image1);
+
+    }
+
+    @FXML
+    private ImageView ImageMain;
+
     @FXML
     private Button Import;
 
@@ -37,11 +50,6 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private DatePicker datepicker;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
 
     @FXML
     private void FuncaoImport(ActionEvent e) {
@@ -131,30 +139,38 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoImprimir(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLImprimir.fxml"));
+        if (selectedFile != null) {
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLImprimir.fxml"));
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
 
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            Alert dialogo = new Alert(Alert.AlertType.WARNING);
+            dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
+            dialogo.showAndWait();
         }
     }
 
     @FXML
-    private void FuncaoDate(ActionEvent e) {
+    private void FuncaoDate(ActionEvent e
+    ) {
         LocalDate date = datepicker.getValue();
     }
 
     @FXML
-    private void FuncaoVoltar(ActionEvent e) {
+    private void FuncaoVoltar(ActionEvent e
+    ) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
         try {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -18,7 +19,8 @@
             <Button fx:id="Imprimir" layoutX="14.0" layoutY="158.0" mnemonicParsing="false" onAction="#FuncaoImprimir" prefHeight="25.0" prefWidth="85.0" text="Imprmir" />
             <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="301.0" text="Coleta de Dados Energeticos" />
             <DatePicker fx:id="Date" layoutX="118.0" layoutY="31.0" onAction="#FuncaoDate" />
-            <Button fx:id="Voltar" onAction="#FuncaoVoltar" layoutX="14.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Back!" />
+            <Button fx:id="Voltar" layoutX="14.0" layoutY="212.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="85.0" text="Back!" />
+            <ImageView fx:id="ImageMain" fitHeight="187.0" fitWidth="121.0" layoutX="194.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
     </children>

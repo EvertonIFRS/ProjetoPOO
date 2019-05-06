@@ -32,7 +32,7 @@ public class FXMLImprimirController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Image Imagem = new Image(FXMLImprimirController.class.getResourceAsStream("BoletoLuz.jpg"));
+        Image Imagem = new Image(FXMLImprimirController.class.getResourceAsStream("RGE.jpg"));
         
         Imagem_Boleto.setImage(Imagem);
     }

@@ -16,6 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +32,8 @@ import javafx.stage.Stage;
  */
 public class FXMLGraficoController implements Initializable {
 
+    String flag_G = "G1", flag_V = "PT", Grafico_Escolhido = "G1", Variavel_Escolhida = "PT";
+    
     /**
      * Initializes the controller class.
      */
@@ -45,14 +51,17 @@ public class FXMLGraficoController implements Initializable {
         G1.setOnAction(e -> {
             G3.setSelected(!G1.isSelected());
             G4.setSelected(!G1.isSelected());
+            flag_G = "G1";
         });
         G3.setOnAction(e -> {
             G1.setSelected(!G3.isSelected());
             G4.setSelected(!G3.isSelected());
+            flag_G = "G2";
         });
         G4.setOnAction(e -> {
             G3.setSelected(!G4.isSelected());
             G1.setSelected(!G4.isSelected());
+            flag_G = "G3";
         });
 
         PT.setOnAction(e -> {
@@ -64,6 +73,7 @@ public class FXMLGraficoController implements Initializable {
                 ER.setSelected(!PT.isSelected());
                 EAT.setSelected(!PT.isSelected());
                 D.setSelected(!PT.isSelected());
+                flag_V = "PT";
             }
         });
 
@@ -75,6 +85,7 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!ST.isSelected());
             EAT.setSelected(!ST.isSelected());
             D.setSelected(!ST.isSelected());
+            flag_V = "ST";
         });
 
         QT.setOnAction(e -> {
@@ -85,6 +96,7 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!QT.isSelected());
             EAT.setSelected(!QT.isSelected());
             D.setSelected(!QT.isSelected());
+            flag_V = "QT";
         });
 
         FPT.setOnAction(e -> {
@@ -95,6 +107,7 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!FPT.isSelected());
             EAT.setSelected(!FPT.isSelected());
             D.setSelected(!FPT.isSelected());
+            flag_V = "FPT";
         });
 
         EA.setOnAction(e -> {
@@ -105,6 +118,7 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!EA.isSelected());
             EAT.setSelected(!EA.isSelected());
             D.setSelected(!EA.isSelected());
+            flag_V = "EA";
         });
 
         ER.setOnAction(e -> {
@@ -115,6 +129,7 @@ public class FXMLGraficoController implements Initializable {
             PT.setSelected(!ER.isSelected());
             EAT.setSelected(!ER.isSelected());
             D.setSelected(!ER.isSelected());
+            flag_V = "ER";
         });
 
         EAT.setOnAction(e -> {
@@ -125,6 +140,7 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!EAT.isSelected());
             PT.setSelected(!EAT.isSelected());
             D.setSelected(!EAT.isSelected());
+            flag_V = "EAT";
         });
 
         D.setOnAction(e -> {
@@ -135,7 +151,117 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!D.isSelected());
             EAT.setSelected(!D.isSelected());
             PT.setSelected(!D.isSelected());
+            flag_V = "D";
         });
+
+        if (flag_G.equals("G1")) {
+
+            Grafico_Escolhido = "Gráfico de Dispersão";
+            if (flag_V.equals("PT")) {
+
+                Variavel_Escolhida = "PT";
+
+            } else if (flag_V.equals("ST")) {
+
+                Variavel_Escolhida = "ST";
+
+            } else if (flag_V.equals("QT")) {
+
+                Variavel_Escolhida = "QT";
+
+            } else if (flag_V.equals("FPT")) {
+
+                Variavel_Escolhida = "FPT";
+
+            } else if (flag_V.equals("EA")) {
+
+                Variavel_Escolhida = "EA";
+
+            } else if (flag_V.equals("ER")) {
+
+                Variavel_Escolhida = "ER";
+
+            } else if (flag_V.equals("EAT")) {
+
+                Variavel_Escolhida = "EAT";
+
+            } else if (flag_V.equals("D")) {
+
+                Variavel_Escolhida = "D";
+            }
+
+        } else if (flag_G.equals("G3")) {
+
+            Grafico_Escolhido = "Gráfico de Colunas";
+            if (flag_V.equals("PT")) {
+
+                Variavel_Escolhida = "PT";
+
+            } else if (flag_V.equals("ST")) {
+
+                Variavel_Escolhida = "ST";
+
+            } else if (flag_V.equals("QT")) {
+
+                Variavel_Escolhida = "QT";
+
+            } else if (flag_V.equals("FPT")) {
+
+                Variavel_Escolhida = "FPT";
+
+            } else if (flag_V.equals("EA")) {
+
+                Variavel_Escolhida = "EA";
+
+            } else if (flag_V.equals("ER")) {
+
+                Variavel_Escolhida = "ER";
+
+            } else if (flag_V.equals("EAT")) {
+
+                Variavel_Escolhida = "EAT";
+
+            } else if (flag_V.equals("D")) {
+
+                Variavel_Escolhida = "D";
+            }
+
+        } else if (flag_G.equals("G4")) {
+
+            Grafico_Escolhido = "Gráfico de Linhas";
+            if (flag_V.equals("PT")) {
+
+                Variavel_Escolhida = "PT";
+
+            } else if (flag_V.equals("ST")) {
+
+                Variavel_Escolhida = "ST";
+
+            } else if (flag_V.equals("QT")) {
+
+                Variavel_Escolhida = "QT";
+
+            } else if (flag_V.equals("FPT")) {
+
+                Variavel_Escolhida = "FPT";
+
+            } else if (flag_V.equals("EA")) {
+
+                Variavel_Escolhida = "EA";
+
+            } else if (flag_V.equals("ER")) {
+
+                Variavel_Escolhida = "ER";
+
+            } else if (flag_V.equals("EAT")) {
+
+                Variavel_Escolhida = "EAT";
+
+            } else if (flag_V.equals("D")) {
+
+                Variavel_Escolhida = "D";
+            }
+        }
     }
 
     @FXML
@@ -151,11 +277,15 @@ public class FXMLGraficoController implements Initializable {
     private void FuncaoGerar(ActionEvent e) throws IOException {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
+        
+        BarChart GrafBarra = new BarChart<>(new CategoryAxis(), new NumberAxis());
+        
+        XYChart.Series GrafLinhas = new XYChart.Series();
+        
+        // Grafico de Dispersão!!!!!!!!
+        
         try {
-            
-            // String X = Funcao_Selecao(G1, G3, G4);
-            // String Y = Funcao_Variavel(PT, ST, QT, FPT, EA, ER, EAT, D);
-             
+
             Parent root;
             root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
 

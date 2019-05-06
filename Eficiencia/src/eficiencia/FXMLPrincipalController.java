@@ -90,6 +90,21 @@ public class FXMLPrincipalController implements Initializable {
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
             dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
             dialogo.showAndWait();
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -97,20 +112,41 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoHistorico(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
+        if (selectedFile != null) {
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
 
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            Alert dialogo = new Alert(Alert.AlertType.WARNING);
+            dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
+            dialogo.showAndWait();
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -118,20 +154,41 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoGraf(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+        if (selectedFile != null) {
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
 
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            Alert dialogo = new Alert(Alert.AlertType.WARNING);
+            dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
+            dialogo.showAndWait();
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -159,35 +216,51 @@ public class FXMLPrincipalController implements Initializable {
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
             dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
             dialogo.showAndWait();
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
     @FXML
-    private void FuncaoDate(ActionEvent e
-    ) {
+    private void FuncaoDate(ActionEvent e) {
+
         LocalDate date = datepicker.getValue();
+
     }
 
     @FXML
-    private void FuncaoVoltar(ActionEvent e
-    ) {
+    private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+        if (selectedFile != null) {
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
 
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
-
 }

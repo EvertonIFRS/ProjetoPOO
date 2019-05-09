@@ -5,9 +5,14 @@
  */
 package eficiencia;
 
+import static eficiencia.Auxiliar.ler_Data;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -35,10 +41,15 @@ public class FXMLImprimirController implements Initializable {
         Image Imagem = new Image(FXMLImprimirController.class.getResourceAsStream("RGE.jpg"));
         
         Imagem_Boleto.setImage(Imagem);
+        
+        
     }
 
     @FXML
     private ImageView Imagem_Boleto;
+    
+    @FXML
+    private TextField Text01, Text02, Text03;
 
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
@@ -62,7 +73,7 @@ public class FXMLImprimirController implements Initializable {
     }
 
     @FXML
-    private void FuncaoPDF(ActionEvent e) {
+    private void FuncaoPrint(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
         try {
@@ -79,6 +90,18 @@ public class FXMLImprimirController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    void setArquivo(File selectedFile) {
+        try {
+            ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
+            
+            // Calculos de Demanda total...
+            
+            
+        } catch (IOException ex) {
+            
         }
     }
 }

@@ -198,8 +198,11 @@ public class FXMLPrincipalController implements Initializable {
         stage1.hide();
         if (selectedFile != null) {
             try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXMLImprimir.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLImprimir.fxml"));
+                Parent root = loader.load();
+
+                FXMLImprimirController controladorImprimir = loader.getController();
+                controladorImprimir.setArquivo(selectedFile);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -245,7 +248,6 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoVoltar(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        if (selectedFile != null) {
             try {
                 Parent root;
                 root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
@@ -263,4 +265,3 @@ public class FXMLPrincipalController implements Initializable {
             }
         }
     }
-}

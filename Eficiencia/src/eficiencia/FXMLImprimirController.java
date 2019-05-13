@@ -90,13 +90,20 @@ public class FXMLImprimirController implements Initializable {
     void setArquivo(File selectedFile) {
         try {
             ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
-          /*  Desenvolver for para percorrer todo o arquivo DATA
-           for 
-            informacoes.get(0).
-            SomaData += informacoes.get(
-            // Calculos de Demanda total...
-            */
             
+            int i = 0;
+            float X = 0, SomaP = 0, SomaD = 0, MedFP = 0;
+            
+            for (Informacoes inf : informacoes) {
+                i += 1;
+                SomaP += Float.parseFloat(inf.getPT().getValue().replaceAll(",", "."));
+                SomaD += Float.parseFloat(inf.getD().getValue().replaceAll(",", "."));
+                X += Float.parseFloat(inf.getFPT().getValue().replaceAll(",", "."));
+            }   
+            MedFP = X/i;
+            Text01.setText(String.valueOf(SomaP));
+            Text02.setText(String.valueOf(SomaD));
+            Text03.setText(String.valueOf(MedFP));
         } catch (IOException ex) {
             
         }

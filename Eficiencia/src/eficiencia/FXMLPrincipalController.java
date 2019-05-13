@@ -55,6 +55,7 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoImport(ActionEvent e) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.setInitialDirectory(new File("C:\\Users\\Frederico\\Desktop\\Faculdade\\Eng. Algorithms\\P. O. O\\"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text Files", "*.txt"));
         Stage stage = (Stage) ((Node) Import).getScene().getWindow();
@@ -210,6 +211,7 @@ public class FXMLPrincipalController implements Initializable {
 
                 FXMLImprimirController controladorImprimir = loader.getController();
                 controladorImprimir.setPrincipal(stage1);
+                controladorImprimir.setArquivo(selectedFile);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();

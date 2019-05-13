@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eficiencia.FXMLVisualizarController">
    <children>
-      <TableView fx:id="InfoTable" prefHeight="400.0" prefWidth="752.0">
+      <TableView fx:id="InfoTable" prefHeight="400.0" prefWidth="833.0">
         <columns>
           <TableColumn fx:id="Data" prefWidth="75.0" text="Data" />
           <TableColumn fx:id="Horario" prefWidth="75.0" text="Hora" />
@@ -22,5 +22,10 @@
             <TableColumn fx:id="D" prefWidth="75.0" text="D" />
         </columns>
       </TableView>
+      <Pane layoutX="750.0" prefHeight="400.0" prefWidth="193.0">
+         <children>
+            <Button fx:id="Voltar" layoutX="87.0" layoutY="361.0" mnemonicParsing="false" onAction="#FuncaoVoltar" text="Back!" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

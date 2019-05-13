@@ -60,7 +60,7 @@ public class FXMLPrincipalController implements Initializable {
         Stage stage = (Stage) ((Node) Import).getScene().getWindow();
         selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            Alert dialogo = new Alert(Alert.AlertType.INFORMATION, "Janela 2 Selecionada!");
+            Alert dialogo = new Alert(Alert.AlertType.WARNING, "Arquivo Texto Selecionado!");
             dialogo.setContentText(selectedFile.getName());
             dialogo.showAndWait();
         }
@@ -78,11 +78,11 @@ public class FXMLPrincipalController implements Initializable {
                 FXMLVisualizarController controladorVisualizar = loader.getController();
                 controladorVisualizar.setArquivo(selectedFile);
 
-                Scene sc = new Scene(root);
-                Stage s = new Stage();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
 
-                s.setScene(sc);
-                s.show();
+                stage.setScene(scene);
+                stage.show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -114,8 +114,8 @@ public class FXMLPrincipalController implements Initializable {
         stage1.hide();
         if (selectedFile != null) {
             try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXMLHistorico.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHistorico.fxml"));
+                Parent root = loader.load();
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -156,8 +156,8 @@ public class FXMLPrincipalController implements Initializable {
         stage1.hide();
         if (selectedFile != null) {
             try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGrafico.fxml"));
+                Parent root = loader.load();
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -241,7 +241,7 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoDate(ActionEvent e) {
 
         LocalDate date = datepicker.getValue();
-
+        
     }
 
     @FXML
@@ -249,8 +249,8 @@ public class FXMLPrincipalController implements Initializable {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
             try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));
+                Parent root = loader.load();
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();

@@ -42,7 +42,12 @@ public class FXMLImprimirController implements Initializable {
         
         Imagem_Boleto.setImage(Imagem);
         
+        /* chamar e receber os 3 dados a serem exibidos na aba de imprimir!!!!
         
+        float MediaFP = MediaData( ); // Media do Fator de Potência
+        float SomaDem = SomaData( ); // Somatorio de todas as Demandas
+        float SomaPot = SomaData( ); // Somatório de todas as Potências       
+          */      
     }
 
     @FXML
@@ -96,9 +101,11 @@ public class FXMLImprimirController implements Initializable {
     void setArquivo(File selectedFile) {
         try {
             ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
-            
+          /*  
+           for 
+            informacoes.get(0).
             // Calculos de Demanda total...
-            
+            */
             
         } catch (IOException ex) {
             

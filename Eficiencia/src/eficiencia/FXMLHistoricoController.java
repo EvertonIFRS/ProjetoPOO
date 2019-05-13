@@ -5,8 +5,11 @@
  */
 package eficiencia;
 
+import static eficiencia.Auxiliar.ler_Data;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -27,44 +31,80 @@ public class FXMLHistoricoController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     private Stage Principal;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    @FXML
-    private void FuncaoDo(ActionEvent e) {
-        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.close();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
     
-    
+    @FXML
+    private TextField PT_Min, PT_Max, ST_Min, 
+            ST_Max, QT_Min, QT_Max, EA_Min, EA_Max, ER_Min, ER_Max, FPT_Min, FPT_Max;
+
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
     }
-    
-    void setPrincipal(Stage stage1){
+
+    void setArquivo(File selectedFile) {
+        try {
+            ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
+
+            float MAXPT = 0, MAXST = 0, MAXQT = 0, MAXEA = 0, MAXER = 0, MAXFP = 0;
+            float MINPT = 0, MINST = 0, MINQT = 0, MINEA = 0, MINER = 0, MINFP = 0;
+
+            for (Informacoes inf : informacoes) {
+                if (Float.parseFloat(inf.getPT().getValue().replace(",", ".")) > MAXPT) {
+                    MAXPT = Float.parseFloat(inf.getPT().getValue().replaceAll(",", "."));
+                } else if (Float.parseFloat(inf.getPT().getValue().replace(",", ".")) < MINPT) {
+                    MINPT = Float.parseFloat(inf.getPT().getValue().replaceAll(",", "."));
+                }
+                if (Float.parseFloat(inf.getST().getValue().replace(",", ".")) > MAXST) {
+                    MAXST = Float.parseFloat(inf.getST().getValue().replaceAll(",", "."));
+                } else if (Float.parseFloat(inf.getST().getValue().replace(",", ".")) < MINST) {
+                    MINST = Float.parseFloat(inf.getST().getValue().replaceAll(",", "."));
+                }
+                if (Float.parseFloat(inf.getQT().getValue().replace(",", ".")) > MAXQT) {
+                    MAXQT = Float.parseFloat(inf.getQT().getValue().replaceAll(",", "."));
+                } else if (Float.parseFloat(inf.getQT().getValue().replace(",", ".")) < MINQT) {
+                    MINQT = Float.parseFloat(inf.getQT().getValue().replaceAll(",", "."));
+                }
+                if (Float.parseFloat(inf.getEA().getValue().replace(",", ".")) > MAXEA) {
+                    MAXEA = Float.parseFloat(inf.getEA().getValue().replaceAll(",", "."));
+                } else if (Float.parseFloat(inf.getEA().getValue().replace(",", ".")) < MINEA) {
+                    MINEA = Float.parseFloat(inf.getEA().getValue().replaceAll(",", "."));
+                }
+                if (Float.parseFloat(inf.getER().getValue().replace(",", ".")) > MAXER) {
+                    MAXER = Float.parseFloat(inf.getER().getValue().replaceAll(",", "."));
+                } else if (Float.parseFloat(inf.getER().getValue().replace(",", ".")) < MINER) {
+                    MINER = Float.parseFloat(inf.getER().getValue().replaceAll(",", "."));
+                }
+                if (Float.parseFloat(inf.getFPT().getValue().replace(",", ".")) > MAXFP) {
+                    MAXFP = Float.parseFloat(inf.getFPT().getValue().replaceAll(",", "."));
+                } else if (Float.parseFloat(inf.getFPT().getValue().replace(",", ".")) < MINFP) {
+                    MINFP = Float.parseFloat(inf.getFPT().getValue().replaceAll(",", "."));
+                }
+            }
+            PT_Max.setText(String.valueOf(MAXPT));
+            PT_Min.setText(String.valueOf(MINPT));
+            ST_Max.setText(String.valueOf(MAXST));
+            ST_Min.setText(String.valueOf(MINST));
+            QT_Max.setText(String.valueOf(MAXQT));
+            QT_Min.setText(String.valueOf(MINQT));
+            EA_Max.setText(String.valueOf(MAXEA));
+            EA_Min.setText(String.valueOf(MINEA));
+            ER_Max.setText(String.valueOf(MAXER));
+            ER_Min.setText(String.valueOf(MINER));
+            FPT_Max.setText(String.valueOf(MAXFP));
+            FPT_Min.setText(String.valueOf(MINFP)); 
+        } catch (IOException ex) {
+
+        }
+    }
+
+    void setPrincipal(Stage stage1) {
         this.Principal = stage1;
     }
 }

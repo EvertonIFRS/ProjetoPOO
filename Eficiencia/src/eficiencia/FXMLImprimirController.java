@@ -43,14 +43,7 @@ public class FXMLImprimirController implements Initializable {
 
         Image Imagem = new Image(FXMLImprimirController.class.getResourceAsStream("RGE.jpg"));
         
-        Imagem_Boleto.setImage(Imagem);
-        
-        /* chamar e receber os 3 dados a serem exibidos na aba de imprimir!!!!
-        
-        float MediaFP = MediaData( ); // Media do Fator de Potência
-        float SomaDem = SomaData( ); // Somatório de todas as Demandas
-        float SomaPot = SomaData( ); // Somatório de todas as Potências       
-          */      
+        Imagem_Boleto.setImage(Imagem);  
     }
 
     @FXML

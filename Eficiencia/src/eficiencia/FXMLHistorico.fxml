@@ -10,8 +10,7 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Button fx:id="Voltar" layoutX="525.0" layoutY="322.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="61.0" text="Back" />
-            <Button fx:id="Do" layoutX="525.0" layoutY="355.0" mnemonicParsing="false" onAction="#FuncaoDo" prefHeight="25.0" prefWidth="61.0" text="Done" />
+            <Button fx:id="Voltar" layoutX="525.0" layoutY="350.0" mnemonicParsing="false" onAction="#FuncaoVoltar" prefHeight="25.0" prefWidth="61.0" text="Back" />
             <DatePicker layoutX="24.0" layoutY="34.0" />
             <TextField editable="false" layoutX="37.0" layoutY="83.0" prefHeight="61.0" prefWidth="36.0" text="PT" />
             <TextField editable="false" layoutX="86.0" layoutY="119.0" prefHeight="25.0" prefWidth="61.0" text="Máximo" />

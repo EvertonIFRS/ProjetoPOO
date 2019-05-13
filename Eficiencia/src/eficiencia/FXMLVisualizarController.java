@@ -58,6 +58,7 @@ public class FXMLVisualizarController implements Initializable {
     private TableColumn<Informacoes, String> D;
 
     private final ObservableList<Informacoes> InfoData = FXCollections.observableArrayList();
+    private Stage Principal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,22 +94,12 @@ public class FXMLVisualizarController implements Initializable {
     
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
+        Principal.show();
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+    }
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    void setPrincipal(Stage stage1) {
+       this.Principal = stage1;
     }
 }

@@ -35,6 +35,9 @@ public class FXMLImprimirController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private Stage Principal;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -45,7 +48,7 @@ public class FXMLImprimirController implements Initializable {
         /* chamar e receber os 3 dados a serem exibidos na aba de imprimir!!!!
         
         float MediaFP = MediaData( ); // Media do Fator de Potência
-        float SomaDem = SomaData( ); // Somatorio de todas as Demandas
+        float SomaDem = SomaData( ); // Somatório de todas as Demandas
         float SomaPot = SomaData( ); // Somatório de todas as Potências       
           */      
     }
@@ -58,23 +61,9 @@ public class FXMLImprimirController implements Initializable {
 
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
+        Principal.show();
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
     @FXML
@@ -101,14 +90,19 @@ public class FXMLImprimirController implements Initializable {
     void setArquivo(File selectedFile) {
         try {
             ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
-          /*  
+          /*  Desenvolver for para percorrer todo o arquivo DATA
            for 
             informacoes.get(0).
+            SomaData += informacoes.get(
             // Calculos de Demanda total...
             */
             
         } catch (IOException ex) {
             
         }
+    }
+
+    void setPrincipal(Stage stage1) {
+        this.Principal = stage1;
     }
 }

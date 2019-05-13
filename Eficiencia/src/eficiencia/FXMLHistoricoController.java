@@ -27,6 +27,9 @@ public class FXMLHistoricoController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private Stage Principal;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -56,22 +59,12 @@ public class FXMLHistoricoController implements Initializable {
     
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
+        Principal.show();
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    }
+    
+    void setPrincipal(Stage stage1){
+        this.Principal = stage1;
     }
 }

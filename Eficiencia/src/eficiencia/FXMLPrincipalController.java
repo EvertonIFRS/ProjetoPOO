@@ -77,7 +77,8 @@ public class FXMLPrincipalController implements Initializable {
 
                 FXMLVisualizarController controladorVisualizar = loader.getController();
                 controladorVisualizar.setArquivo(selectedFile);
-
+                controladorVisualizar.setPrincipal(stage1);
+                
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 
@@ -89,7 +90,7 @@ public class FXMLPrincipalController implements Initializable {
         } else {
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
             dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
-            dialogo.showAndWait();
+                dialogo.showAndWait();
             try {
                 Parent root;
                 root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
@@ -116,6 +117,9 @@ public class FXMLPrincipalController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHistorico.fxml"));
                 Parent root = loader.load();
+                
+                FXMLHistoricoController controladorHistorico = loader.getController();
+                controladorHistorico.setPrincipal(stage1);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -158,6 +162,9 @@ public class FXMLPrincipalController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGrafico.fxml"));
                 Parent root = loader.load();
+                
+                FXMLGraficoController controladorGrafico = loader.getController();
+                controladorGrafico.setPrincipal(stage1);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -202,7 +209,7 @@ public class FXMLPrincipalController implements Initializable {
                 Parent root = loader.load();
 
                 FXMLImprimirController controladorImprimir = loader.getController();
-                controladorImprimir.setArquivo(selectedFile);
+                controladorImprimir.setPrincipal(stage1);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();

@@ -32,6 +32,8 @@ public class FXMLHistoricoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
     }
     
     @FXML
@@ -42,7 +44,7 @@ public class FXMLHistoricoController implements Initializable {
     
     @FXML
     private TextField ER_Min, ER_Max, FPT_Min, FPT_Max;
-
+    
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();
@@ -55,7 +57,7 @@ public class FXMLHistoricoController implements Initializable {
             ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
 
             float MAXPT = 0, MAXST = 0, MAXQT = 0, MAXEA = 0, MAXER = 0, MAXFP = 0;
-            float MINPT = 0, MINST = 0, MINQT = 0, MINEA = 0, MINER = 0, MINFP = 0;
+            float MINPT = 1000, MINST = 1000, MINQT = 1000, MINEA = 1000, MINER = 1000, MINFP = 1000;
 
             for (Informacoes inf : informacoes) {
                 if (Float.parseFloat(inf.getPT().getValue().replaceAll(",", ".")) > MAXPT) {
@@ -101,7 +103,9 @@ public class FXMLHistoricoController implements Initializable {
             ER_Min.setText(String.valueOf(MINER));
             FPT_Max.setText(String.valueOf(MAXFP));
             FPT_Min.setText(String.valueOf(MINFP)); 
+            
         } catch (IOException ex) {
+            System.out.println("ERRO: " + ex);
         }
     }
 

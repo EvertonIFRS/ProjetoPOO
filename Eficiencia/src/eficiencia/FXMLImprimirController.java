@@ -93,8 +93,8 @@ public class FXMLImprimirController implements Initializable {
             }   
             MedFP = X/i;
             Text01.setText(String.valueOf(SomaP));
-            Text02.setText(String.valueOf(SomaD));
-            Text03.setText(String.valueOf(MedFP));
+            Text02.setText(String.valueOf(MedFP));
+            Text03.setText(String.valueOf(SomaD));
         } catch (IOException ex) {
             
         }

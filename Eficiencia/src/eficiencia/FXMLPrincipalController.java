@@ -121,6 +121,7 @@ public class FXMLPrincipalController implements Initializable {
                 
                 FXMLHistoricoController controladorHistorico = loader.getController();
                 controladorHistorico.setPrincipal(stage1);
+                controladorHistorico.setArquivo(selectedFile);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -130,6 +131,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

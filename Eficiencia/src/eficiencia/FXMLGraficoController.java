@@ -33,13 +33,12 @@ import javafx.stage.Stage;
 public class FXMLGraficoController implements Initializable {
 
     String flag_G = "G1", flag_V = "PT", Grafico_Escolhido = "G1", Variavel_Escolhida = "PT";
-    
+
     /**
      * Initializes the controller class.
      */
-    
     private Stage Principal;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -280,13 +279,24 @@ public class FXMLGraficoController implements Initializable {
     private void FuncaoGerar(ActionEvent e) throws IOException {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        
+
         BarChart GrafBarra = new BarChart<>(new CategoryAxis(), new NumberAxis());
-        
+
         XYChart.Series GrafLinhas = new XYChart.Series();
         
-        // Grafico de Dispersão!!!!!!!!
+        // Declaração do Gráfico de Dispersão!!!!!
         
+        
+        
+        // Desenvolver o coletor dos dados escolhidos!!!!!
+        
+        
+        
+        // Setar o Gráfico Escolhido com os dados contra o tempo!!!!!
+        
+        
+                    
+
         try {
 
             Parent root;
@@ -311,8 +321,8 @@ public class FXMLGraficoController implements Initializable {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
     }
-    
-    void setPrincipal(Stage stage1){
+
+    void setPrincipal(Stage stage1) {
         this.Principal = stage1;
     }
 }

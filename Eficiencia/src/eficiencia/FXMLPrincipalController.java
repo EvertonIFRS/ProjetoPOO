@@ -128,10 +128,7 @@ public class FXMLPrincipalController implements Initializable {
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
-
-                stage.setOnCloseRequest(ee -> {
-                    stage.hide();
-                });
+                
                 stage.setScene(scene);
                 stage.show();
                 

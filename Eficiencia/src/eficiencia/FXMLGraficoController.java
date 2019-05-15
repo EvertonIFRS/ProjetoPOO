@@ -55,17 +55,23 @@ public class FXMLGraficoController implements Initializable {
         G1.setOnAction(e -> {
             G3.setSelected(!G1.isSelected());
             G4.setSelected(!G1.isSelected());
-            flag_G = "G1";
+            if(G1.isSelected()){
+                flag_V = "G1";
+            }
         });
         G3.setOnAction(e -> {
             G1.setSelected(!G3.isSelected());
             G4.setSelected(!G3.isSelected());
-            flag_G = "G2";
+            if(G3.isSelected()){
+                flag_V = "G3";
+            }
         });
         G4.setOnAction(e -> {
             G3.setSelected(!G4.isSelected());
             G1.setSelected(!G4.isSelected());
-            flag_G = "G3";
+            if(G4.isSelected()){
+                flag_V = "G4";
+            }
         });
 
         PT.setOnAction(e -> {
@@ -77,7 +83,9 @@ public class FXMLGraficoController implements Initializable {
                 ER.setSelected(!PT.isSelected());
                 EAT.setSelected(!PT.isSelected());
                 D.setSelected(!PT.isSelected());
-                flag_V = "PT";
+                if (PT.isSelected()) {
+                    flag_V = "PT";
+                }
             }
         });
 
@@ -89,7 +97,9 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!ST.isSelected());
             EAT.setSelected(!ST.isSelected());
             D.setSelected(!ST.isSelected());
-            flag_V = "ST";
+            if (ST.isSelected()) {
+                flag_V = "ST";
+            }
         });
 
         QT.setOnAction(e -> {
@@ -100,7 +110,9 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!QT.isSelected());
             EAT.setSelected(!QT.isSelected());
             D.setSelected(!QT.isSelected());
-            flag_V = "QT";
+            if (QT.isSelected()) {
+                flag_V = "QT";
+            }
         });
 
         FPT.setOnAction(e -> {
@@ -111,7 +123,9 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!FPT.isSelected());
             EAT.setSelected(!FPT.isSelected());
             D.setSelected(!FPT.isSelected());
-            flag_V = "FPT";
+            if (FPT.isSelected()) {
+                flag_V = "FPT";
+            }
         });
 
         EA.setOnAction(e -> {
@@ -122,7 +136,9 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!EA.isSelected());
             EAT.setSelected(!EA.isSelected());
             D.setSelected(!EA.isSelected());
-            flag_V = "EA";
+            if (EA.isSelected()) {
+                flag_V = "EA";
+            }
         });
 
         ER.setOnAction(e -> {
@@ -133,7 +149,9 @@ public class FXMLGraficoController implements Initializable {
             PT.setSelected(!ER.isSelected());
             EAT.setSelected(!ER.isSelected());
             D.setSelected(!ER.isSelected());
-            flag_V = "ER";
+            if (ER.isSelected()) {
+                flag_V = "ER";
+            }
         });
 
         EAT.setOnAction(e -> {
@@ -144,7 +162,9 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!EAT.isSelected());
             PT.setSelected(!EAT.isSelected());
             D.setSelected(!EAT.isSelected());
-            flag_V = "EAT";
+            if (EAT.isSelected()) {
+                flag_V = "EAT";
+            }
         });
 
         D.setOnAction(e -> {
@@ -155,7 +175,10 @@ public class FXMLGraficoController implements Initializable {
             ER.setSelected(!D.isSelected());
             EAT.setSelected(!D.isSelected());
             PT.setSelected(!D.isSelected());
-            flag_V = "D";
+            if (D.isSelected()) {
+                flag_V = "D";
+            }
+
         });
 
         if (flag_G.equals("G1")) {
@@ -284,11 +307,10 @@ public class FXMLGraficoController implements Initializable {
 
         // Desenvolver o coletor dos dados escolhidos!!!!!
         // Setar o Gráfico Escolhido com os dados contra o tempo!!!!!
-        
         if (this.Grafico_Escolhido.equals("Grafico de Dispersão")) {
-            
+
             ScatterChart GrafDisp = new ScatterChart(new CategoryAxis(), new NumberAxis());
-            
+
             if (this.Variavel_Escolhida.equals("PT")) {
 
             } else if (this.Variavel_Escolhida.equals("ST")) {
@@ -327,9 +349,9 @@ public class FXMLGraficoController implements Initializable {
                 }
             }
         } else if (this.Grafico_Escolhido.equals("Grafico de Colunas")) {
-            
+
             BarChart GrafBarra = new BarChart<>(new CategoryAxis(), new NumberAxis());
-            
+
             if (this.Variavel_Escolhida.equals("PT")) {
 
             } else if (this.Variavel_Escolhida.equals("ST")) {

@@ -103,6 +103,7 @@ public class FXMLHistoricoController implements Initializable {
             ER_Min.setText(String.valueOf(MINER));
             FPT_Max.setText(String.valueOf(MAXFP));
             FPT_Min.setText(String.valueOf(MINFP)); 
+            
             if(MINFP < 0.8){
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("O menor Valor do Fator de Potência Encontrado\nEstá Inferior ao Valor Minímo permitido pela Norma!");

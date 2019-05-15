@@ -54,8 +54,11 @@ public class FXML_LoginController implements Initializable {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
         try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXMLRegisterIn.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegisterIn.fxml"));
+            Parent root = loader.load();
+
+            FXMLRegisterInController controladorRegisterIn = loader.getController();
+            controladorRegisterIn.setLogin(stage1);
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -65,6 +68,7 @@ public class FXML_LoginController implements Initializable {
             });
             stage.setScene(scene);
             stage.show();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -90,8 +94,12 @@ public class FXML_LoginController implements Initializable {
                             Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
                             stage1.close();
                             senha_correta = true;
-                            Parent root;
-                            root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPrincipal.fxml"));
+                            Parent root = loader.load();
+
+                            FXMLPrincipalController controladorPrincipal = loader.getController();
+                            controladorPrincipal.setLogin(stage1);
 
                             Scene scene = new Scene(root);
                             Stage stage = new Stage();

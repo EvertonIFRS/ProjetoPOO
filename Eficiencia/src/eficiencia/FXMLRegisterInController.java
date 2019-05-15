@@ -31,8 +31,11 @@ public class FXMLRegisterInController implements Initializable {
 
     @FXML
     TextField NewUser;
+    
     @FXML
     PasswordField NewPassword, Confirm;
+    
+    private Stage Login;
 
     /**
      * Initializes the controller class.
@@ -86,23 +89,13 @@ public class FXMLRegisterInController implements Initializable {
 
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
+        Login.show();
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+    }
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    void setLogin(Stage stage1) {
+        this.Login = stage1;
     }
 
 }

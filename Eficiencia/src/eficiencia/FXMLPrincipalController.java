@@ -31,6 +31,8 @@ import javafx.stage.Stage;
  */
 public class FXMLPrincipalController implements Initializable {
 
+    private Stage Login;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -79,7 +81,7 @@ public class FXMLPrincipalController implements Initializable {
                 FXMLVisualizarController controladorVisualizar = loader.getController();
                 controladorVisualizar.setArquivo(selectedFile);
                 controladorVisualizar.setPrincipal(stage1);
-                
+
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 
@@ -91,7 +93,7 @@ public class FXMLPrincipalController implements Initializable {
         } else {
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
             dialogo.setContentText("Arquivo de dados energéticos não selecionado!");
-                dialogo.showAndWait();
+            dialogo.showAndWait();
             try {
                 Parent root;
                 root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
@@ -118,7 +120,7 @@ public class FXMLPrincipalController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHistorico.fxml"));
                 Parent root = loader.load();
-                
+
                 FXMLHistoricoController controladorHistorico = loader.getController();
                 controladorHistorico.setPrincipal(stage1);
                 controladorHistorico.setArquivo(selectedFile);
@@ -165,7 +167,7 @@ public class FXMLPrincipalController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGrafico.fxml"));
                 Parent root = loader.load();
-                
+
                 FXMLGraficoController controladorGrafico = loader.getController();
                 controladorGrafico.setPrincipal(stage1);
 
@@ -252,27 +254,17 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoDate(ActionEvent e) {
 
         LocalDate date = datepicker.getValue();
-        
+
     }
 
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
+        Login.show();
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Login.fxml"));
-                Parent root = loader.load();
-
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-
-                stage.setOnCloseRequest(ee -> {
-                    stage.hide();
-                });
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
     }
+
+    void setLogin(Stage stage1) {
+        this.Login = stage1;
+    }
+}

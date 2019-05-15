@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -84,6 +85,7 @@ public class FXMLHistoricoController implements Initializable {
                     MINFP = Float.parseFloat(inf.getFPT().getValue().replaceAll(",", "."));
                 }
             }
+
             PT_Max.setText(String.valueOf(MAXPT));
             PT_Min.setText(String.valueOf(MINPT));
             ST_Max.setText(String.valueOf(MAXST));
@@ -96,6 +98,11 @@ public class FXMLHistoricoController implements Initializable {
             ER_Min.setText(String.valueOf(MINER));
             FPT_Max.setText(String.valueOf(MAXFP));
             FPT_Min.setText(String.valueOf(MINFP)); 
+            if(MINFP < 0.88){
+                Alert dialogo = new Alert(Alert.AlertType.WARNING);
+                dialogo.setContentText("O menor Valor do Fator de Potência Encontrado\nEstá Inferior ao Valor Minímo permitido pela Norma!");
+                dialogo.showAndWait();
+            }
             
         } catch (IOException ex) {
             System.out.println("ERRO: " + ex);

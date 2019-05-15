@@ -44,13 +44,6 @@ public class FXMLHistoricoController implements Initializable {
     
     @FXML
     private TextField ER_Min, ER_Max, FPT_Min, FPT_Max;
-    
-    @FXML
-    private void FuncaoVoltar(ActionEvent e) {
-        Principal.show();
-        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.close();
-    }
 
     void setArquivo(File selectedFile) {
         try {
@@ -107,6 +100,13 @@ public class FXMLHistoricoController implements Initializable {
         } catch (IOException ex) {
             System.out.println("ERRO: " + ex);
         }
+    }
+    
+    @FXML
+    private void FuncaoVoltar(ActionEvent e) {
+        Principal.show();
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.close();
     }
 
     void setPrincipal(Stage stage1) {

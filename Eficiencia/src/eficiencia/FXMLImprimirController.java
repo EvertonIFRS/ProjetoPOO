@@ -51,13 +51,6 @@ public class FXMLImprimirController implements Initializable {
     private TextField Text01, Text02, Text03;
 
     @FXML
-    private void FuncaoVoltar(ActionEvent e) {
-        Principal.show();
-        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage1.close();
-    }
-
-    @FXML
     private void FuncaoPrint(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
@@ -98,6 +91,13 @@ public class FXMLImprimirController implements Initializable {
         } catch (IOException ex) {
             
         }
+    }
+    
+    @FXML
+    private void FuncaoVoltar(ActionEvent e) {
+        Principal.show();
+        Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage1.close();
     }
 
     void setPrincipal(Stage stage1) {

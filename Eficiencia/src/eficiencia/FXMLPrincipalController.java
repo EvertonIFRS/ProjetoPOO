@@ -87,6 +87,7 @@ public class FXMLPrincipalController implements Initializable {
 
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -106,6 +107,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -132,6 +134,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -151,6 +154,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -198,6 +202,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -225,6 +230,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -244,6 +250,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

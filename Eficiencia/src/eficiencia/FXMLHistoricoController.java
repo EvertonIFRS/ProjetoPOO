@@ -9,6 +9,7 @@ import static eficiencia.Auxiliar.ler_Data;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -45,6 +47,9 @@ public class FXMLHistoricoController implements Initializable {
     
     @FXML
     private TextField ER_Min, ER_Max, FPT_Min, FPT_Max;
+    
+    @FXML
+    private DatePicker datepicker;
 
     void setArquivo(File selectedFile) {
         try {
@@ -98,7 +103,7 @@ public class FXMLHistoricoController implements Initializable {
             ER_Min.setText(String.valueOf(MINER));
             FPT_Max.setText(String.valueOf(MAXFP));
             FPT_Min.setText(String.valueOf(MINFP)); 
-            if(MINFP < 0.88){
+            if(MINFP < 0.8){
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("O menor Valor do Fator de Potência Encontrado\nEstá Inferior ao Valor Minímo permitido pela Norma!");
                 dialogo.showAndWait();
@@ -107,6 +112,13 @@ public class FXMLHistoricoController implements Initializable {
         } catch (IOException ex) {
             System.out.println("ERRO: " + ex);
         }
+    }
+    
+    @FXML
+    private void FuncaoDate(ActionEvent e) {
+
+        LocalDate date = datepicker.getValue();
+
     }
     
     @FXML

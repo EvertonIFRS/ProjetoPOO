@@ -113,17 +113,16 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
-    private void FuncaoHistorico(ActionEvent e) {
+    private void FuncaoGraf(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
         if (selectedFile != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHistorico.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGrafico.fxml"));
                 Parent root = loader.load();
 
-                FXMLHistoricoController controladorHistorico = loader.getController();
-                controladorHistorico.setPrincipal(stage1);
-                controladorHistorico.setArquivo(selectedFile);
+                FXMLGraficoController controladorGrafico = loader.getController();
+                controladorGrafico.setPrincipal(stage1);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -133,7 +132,6 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
-
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -158,18 +156,19 @@ public class FXMLPrincipalController implements Initializable {
             }
         }
     }
-
+    
     @FXML
-    private void FuncaoGraf(ActionEvent e) {
+    private void FuncaoHistorico(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
         if (selectedFile != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGrafico.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHistorico.fxml"));
                 Parent root = loader.load();
 
-                FXMLGraficoController controladorGrafico = loader.getController();
-                controladorGrafico.setPrincipal(stage1);
+                FXMLHistoricoController controladorHistorico = loader.getController();
+                controladorHistorico.setPrincipal(stage1);
+                controladorHistorico.setArquivo(selectedFile);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -179,6 +178,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

@@ -19,7 +19,9 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -280,38 +282,150 @@ public class FXMLGraficoController implements Initializable {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
 
-        BarChart GrafBarra = new BarChart<>(new CategoryAxis(), new NumberAxis());
-
-        XYChart.Series GrafLinhas = new XYChart.Series();
-        
-        // Declaração do Gráfico de Dispersão!!!!!
-        
-        
-        
         // Desenvolver o coletor dos dados escolhidos!!!!!
-        
-        
-        
         // Setar o Gráfico Escolhido com os dados contra o tempo!!!!!
         
-        
-                    
+        if (this.Grafico_Escolhido.equals("Grafico de Dispersão")) {
+            
+            ScatterChart GrafDisp = new ScatterChart(new CategoryAxis(), new NumberAxis());
+            
+            if (this.Variavel_Escolhida.equals("PT")) {
 
-        try {
+            } else if (this.Variavel_Escolhida.equals("ST")) {
 
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
+            } else if (this.Variavel_Escolhida.equals("QT")) {
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+            } else if (this.Variavel_Escolhida.equals("EA")) {
 
-            stage.setOnCloseRequest(ee -> {
-                stage.hide();
-            });
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            } else if (this.Variavel_Escolhida.equals("ER")) {
+
+            } else if (this.Variavel_Escolhida.equals("EAT")) {
+
+            } else if (this.Variavel_Escolhida.equals("FPT")) {
+
+            } else if (this.Variavel_Escolhida.equals("D")) {
+
+            } else {
+                Alert dialogo = new Alert(Alert.AlertType.WARNING);
+                dialogo.setContentText("Variável não Selecionada!");
+                dialogo.showAndWait();
+
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } else if (this.Grafico_Escolhido.equals("Grafico de Colunas")) {
+            
+            BarChart GrafBarra = new BarChart<>(new CategoryAxis(), new NumberAxis());
+            
+            if (this.Variavel_Escolhida.equals("PT")) {
+
+            } else if (this.Variavel_Escolhida.equals("ST")) {
+
+            } else if (this.Variavel_Escolhida.equals("QT")) {
+
+            } else if (this.Variavel_Escolhida.equals("EA")) {
+
+            } else if (this.Variavel_Escolhida.equals("ER")) {
+
+            } else if (this.Variavel_Escolhida.equals("EAT")) {
+
+            } else if (this.Variavel_Escolhida.equals("FPT")) {
+
+            } else if (this.Variavel_Escolhida.equals("D")) {
+
+            } else {
+                Alert dialogo = new Alert(Alert.AlertType.WARNING);
+                dialogo.setContentText("Variável não Selecionada!");
+                dialogo.showAndWait();
+
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } else if (this.Grafico_Escolhido.equals("Grafico de Linhas")) {
+            XYChart.Series GrafLinhas = new XYChart.Series();
+            if (this.Variavel_Escolhida.equals("PT")) {
+
+            } else if (this.Variavel_Escolhida.equals("ST")) {
+
+            } else if (this.Variavel_Escolhida.equals("QT")) {
+
+            } else if (this.Variavel_Escolhida.equals("EA")) {
+
+            } else if (this.Variavel_Escolhida.equals("ER")) {
+
+            } else if (this.Variavel_Escolhida.equals("EAT")) {
+
+            } else if (this.Variavel_Escolhida.equals("FPT")) {
+
+            } else if (this.Variavel_Escolhida.equals("D")) {
+
+            } else {
+                Alert dialogo = new Alert(Alert.AlertType.WARNING);
+                dialogo.setContentText("Variável não Selecionada!");
+                dialogo.showAndWait();
+
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } else {
+            Alert dialogo = new Alert(Alert.AlertType.WARNING);
+            dialogo.setContentText("Grafico não Selecionado!");
+            dialogo.showAndWait();
+
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 

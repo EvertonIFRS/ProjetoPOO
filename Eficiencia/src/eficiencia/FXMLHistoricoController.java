@@ -35,19 +35,18 @@ public class FXMLHistoricoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
+
     }
-    
+
     @FXML
     private TextField PT_Min, PT_Max, ST_Min, ST_Max;
-    
+
     @FXML
     private TextField QT_Min, QT_Max, EA_Min, EA_Max;
-    
+
     @FXML
     private TextField ER_Min, ER_Max, FPT_Min, FPT_Max;
-    
+
     @FXML
     private DatePicker datepicker;
 
@@ -102,26 +101,27 @@ public class FXMLHistoricoController implements Initializable {
             ER_Max.setText(String.valueOf(MAXER));
             ER_Min.setText(String.valueOf(MINER));
             FPT_Max.setText(String.valueOf(MAXFP));
-            FPT_Min.setText(String.valueOf(MINFP)); 
-            
-            if(MINFP < 0.8){
+            FPT_Min.setText(String.valueOf(MINFP));
+
+            if (MINFP < 0.8) {
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
-                dialogo.setContentText("O menor Valor do Fator de Potência Encontrado\nEstá Inferior ao Valor Minímo permitido pela Norma!");
+                dialogo.setContentText("O menor Valor do Fator de Potência Encontrado\n"
+                        + "Está Inferior ao Valor Minímo permitido pela Norma!");
                 dialogo.showAndWait();
             }
-            
+
         } catch (IOException ex) {
             System.out.println("ERRO: " + ex);
         }
     }
-    
+
     @FXML
     private void FuncaoDate(ActionEvent e) {
 
         LocalDate date = datepicker.getValue();
 
     }
-    
+
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();

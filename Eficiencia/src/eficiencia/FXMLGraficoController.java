@@ -331,24 +331,24 @@ public class FXMLGraficoController implements Initializable {
             }
         } else {
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
-                dialogo.setContentText("Grafico não Selecionada!");
-                dialogo.showAndWait();
-                try {
-                    Parent root;
-                    root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+            dialogo.setContentText("Grafico não Selecionada!");
+            dialogo.showAndWait();
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
 
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
 
-                    stage.setOnCloseRequest(ee -> {
-                        stage.hide();
-                    });
-                    stage.setScene(scene);
-                    stage.show();
+                stage.setOnCloseRequest(ee -> {
+                    stage.hide();
+                });
+                stage.setScene(scene);
+                stage.show();
 
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -381,7 +381,23 @@ public class FXMLGraficoController implements Initializable {
         Scene scene = new Scene(GrafDisp, 500, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+            Scene sc = new Scene(root);
+            Stage sg = new Stage();
+
+            sg.setOnCloseRequest(ee -> {
+                sg.hide();
+            });
+            sg.setScene(sc);
+            sg.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     void geraGraficoCol(String titulo) {
@@ -414,7 +430,23 @@ public class FXMLGraficoController implements Initializable {
         Scene scene = new Scene(GrafDisp, 500, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+            Scene sc = new Scene(root);
+            Stage sg = new Stage();
+
+            sg.setOnCloseRequest(ee -> {
+                sg.hide();
+            });
+            sg.setScene(sc);
+            sg.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     void geraGraficoLin(String titulo) {
@@ -447,7 +479,23 @@ public class FXMLGraficoController implements Initializable {
         Scene scene = new Scene(GrafDisp, 500, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+
+            Scene sc = new Scene(root);
+            Stage sg = new Stage();
+
+            sg.setOnCloseRequest(ee -> {
+                sg.hide();
+            });
+            sg.setScene(sc);
+            sg.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     void setArquivo(File selectedFile) {

@@ -87,7 +87,7 @@ public class FXMLPrincipalController implements Initializable {
 
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -107,7 +107,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -125,13 +125,14 @@ public class FXMLPrincipalController implements Initializable {
 
                 FXMLGraficoController controladorGrafico = loader.getController();
                 controladorGrafico.setPrincipal(stage1);
+                controladorGrafico.setArquivo(selectedFile);
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
-                
+
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -151,13 +152,13 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
     }
-    
+
     @FXML
     private void FuncaoHistorico(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -199,7 +200,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -227,7 +228,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -247,7 +248,7 @@ public class FXMLPrincipalController implements Initializable {
                 });
                 stage.setScene(scene);
                 stage.show();
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

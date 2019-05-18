@@ -7,9 +7,14 @@ package eficiencia;
 
 // import static eficiencia.Auxiliar.Funcao_Selecao;
 import static com.sun.deploy.trace.Trace.print;
+import static eficiencia.Auxiliar.ler_Data;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +47,15 @@ public class FXMLGraficoController implements Initializable {
      */
     private Stage Principal;
 
+    private static final String SERIE_PT = "Série PT";
+    private static final String SERIE_ST = "Série ST";
+    private static final String SERIE_QT = "Série QT";
+    private static final String SERIE_EA = "Série EA";
+    private static final String SERIE_ER = "Série ER";
+    private static final String SERIE_EAT = "Série EAT";
+    private static final String SERIE_FPT = "Série FPT";
+    private static final String SERIE_D = "Série D";
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -60,7 +74,7 @@ public class FXMLGraficoController implements Initializable {
                 flag_G = "G1";
             }
         });
-        
+
         G3.setOnAction(e -> {
             G1.setSelected(!G3.isSelected());
             G4.setSelected(!G3.isSelected());
@@ -68,7 +82,7 @@ public class FXMLGraficoController implements Initializable {
                 flag_G = "G3";
             }
         });
-        
+
         G4.setOnAction(e -> {
             G3.setSelected(!G4.isSelected());
             G1.setSelected(!G4.isSelected());
@@ -194,47 +208,34 @@ public class FXMLGraficoController implements Initializable {
     @FXML
     private CheckBox PT, ST, QT, FPT, EA, ER, EAT, D;
 
+    ArrayList<Informacoes> informacoes;
+
     @FXML
     private void FuncaoGerar(ActionEvent e) throws IOException {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.hide();
-/*
-        // Desenvolver o coletor dos dados escolhidos!!!!!
-        // Setar o Gráfico Escolhido com os dados contra o tempo!!!!!
-        if (G1.equals("Grafico de Dispersão")) {
 
-            print("Grafico de Dispersão");
-            ScatterChart GrafDisp = new ScatterChart(new CategoryAxis(), new NumberAxis());
-
-            if (this.Variavel_Escolhida.equals("PT")) {
-                print("PT");
-
-            } else if (this.Variavel_Escolhida.equals("ST")) {
-                print("ST");
-
-            } else if (this.Variavel_Escolhida.equals("QT")) {
-                print("QT");
-
-            } else if (this.Variavel_Escolhida.equals("EA")) {
-                print("EA");
-
-            } else if (this.Variavel_Escolhida.equals("ER")) {
-                print("ER");
-
-            } else if (this.Variavel_Escolhida.equals("EAT")) {
-                print("EAT");
-
-            } else if (this.Variavel_Escolhida.equals("FPT")) {
-                print("FPT");
-
-            } else if (this.Variavel_Escolhida.equals("D")) {
-                print("D");
-
+        if (G1.isSelected()) {
+            if (PT.isSelected()) {
+                geraGraficoDisp(SERIE_PT);
+            } else if (ST.isSelected()) {
+                geraGraficoDisp(SERIE_ST);
+            } else if (QT.isSelected()) {
+                geraGraficoDisp(SERIE_QT);
+            } else if (EA.isSelected()) {
+                geraGraficoDisp(SERIE_EA);
+            } else if (ER.isSelected()) {
+                geraGraficoDisp(SERIE_ER);
+            } else if (EAT.isSelected()) {
+                geraGraficoDisp(SERIE_EAT);
+            } else if (FPT.isSelected()) {
+                geraGraficoDisp(SERIE_FPT);
+            } else if (D.isSelected()) {
+                geraGraficoDisp(SERIE_D);
             } else {
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("Variável não Selecionada!");
                 dialogo.showAndWait();
-
                 try {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
@@ -247,45 +248,32 @@ public class FXMLGraficoController implements Initializable {
                     });
                     stage.setScene(scene);
                     stage.show();
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
-        }
-        if (this.Grafico_Escolhido.equals("Grafico de Colunas")) {
-
-            print("Grafico de Colunas");
-            BarChart GrafBarra = new BarChart<>(new CategoryAxis(), new NumberAxis());
-
-            if (this.Variavel_Escolhida.equals("PT")) {
-                print("PT");
-
-            } else if (this.Variavel_Escolhida.equals("ST")) {
-                print("ST");
-
-            } else if (this.Variavel_Escolhida.equals("QT")) {
-                print("QT");
-
-            } else if (this.Variavel_Escolhida.equals("EA")) {
-                print("EA");
-
-            } else if (this.Variavel_Escolhida.equals("ER")) {
-                print("ER");
-
-            } else if (this.Variavel_Escolhida.equals("EAT")) {
-                print("EAT");
-
-            } else if (this.Variavel_Escolhida.equals("FPT")) {
-                print("FPT");
-
-            } else if (this.Variavel_Escolhida.equals("D")) {
-                print("D");
-
+        } else if (G3.isSelected()) {
+            if (PT.isSelected()) {
+                geraGraficoCol(SERIE_PT);
+            } else if (ST.isSelected()) {
+                geraGraficoCol(SERIE_ST);
+            } else if (QT.isSelected()) {
+                geraGraficoCol(SERIE_QT);
+            } else if (EA.isSelected()) {
+                geraGraficoCol(SERIE_EA);
+            } else if (ER.isSelected()) {
+                geraGraficoCol(SERIE_ER);
+            } else if (EAT.isSelected()) {
+                geraGraficoCol(SERIE_EAT);
+            } else if (FPT.isSelected()) {
+                geraGraficoCol(SERIE_FPT);
+            } else if (D.isSelected()) {
+                geraGraficoCol(SERIE_D);
             } else {
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("Variável não Selecionada!");
                 dialogo.showAndWait();
-
                 try {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
@@ -298,45 +286,32 @@ public class FXMLGraficoController implements Initializable {
                     });
                     stage.setScene(scene);
                     stage.show();
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
-        }
-        if (this.Grafico_Escolhido.equals("Grafico de Linhas")) {
-
-            print("Grafico de Linhas");
-            XYChart.Series GrafLinhas = new XYChart.Series();
-
-            if (this.Variavel_Escolhida.equals("PT")) {
-                print("PT");
-
-            } else if (this.Variavel_Escolhida.equals("ST")) {
-                print("ST");
-
-            } else if (this.Variavel_Escolhida.equals("QT")) {
-                print("QT");
-
-            } else if (this.Variavel_Escolhida.equals("EA")) {
-                print("EA");
-
-            } else if (this.Variavel_Escolhida.equals("ER")) {
-                print("ER");
-
-            } else if (this.Variavel_Escolhida.equals("EAT")) {
-                print("EAT");
-
-            } else if (this.Variavel_Escolhida.equals("FPT")) {
-                print("FPT");
-
-            } else if (this.Variavel_Escolhida.equals("D")) {
-                print("D");
-
+        } else if (G4.isSelected()) {
+            if (PT.isSelected()) {
+                geraGraficoLin(SERIE_PT);
+            } else if (ST.isSelected()) {
+                geraGraficoLin(SERIE_ST);
+            } else if (QT.isSelected()) {
+                geraGraficoLin(SERIE_QT);
+            } else if (EA.isSelected()) {
+                geraGraficoLin(SERIE_EA);
+            } else if (ER.isSelected()) {
+                geraGraficoLin(SERIE_ER);
+            } else if (EAT.isSelected()) {
+                geraGraficoLin(SERIE_EAT);
+            } else if (FPT.isSelected()) {
+                geraGraficoLin(SERIE_FPT);
+            } else if (D.isSelected()) {
+                geraGraficoLin(SERIE_D);
             } else {
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("Variável não Selecionada!");
                 dialogo.showAndWait();
-
                 try {
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
@@ -349,32 +324,137 @@ public class FXMLGraficoController implements Initializable {
                     });
                     stage.setScene(scene);
                     stage.show();
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
-        } 
-        if(!G1.isSelected() && !G3.isSelected() && !G4.isSelected()) {
+        } else {
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
-            dialogo.setContentText("Grafico não Selecionado!");
-            dialogo.showAndWait();
+                dialogo.setContentText("Grafico não Selecionada!");
+                dialogo.showAndWait();
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
 
-            try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("FXMLGrafico.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
+                    stage.setOnCloseRequest(ee -> {
+                        stage.hide();
+                    });
+                    stage.setScene(scene);
+                    stage.show();
 
-                stage.setOnCloseRequest(ee -> {
-                    stage.hide();
-                });
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+        }
+    }
+
+    void geraGraficoDisp(String titulo) {
+        ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
+        XYChart.Series serie = new XYChart.Series();
+        serie.setName(titulo);
+        double t = 0;
+        for (Informacoes inf : informacoes) {
+            if (titulo.equals(SERIE_PT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_ST)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_QT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_EA)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_ER)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_EAT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_FPT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_D)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
             }
-        }*/
+            t++;
+        }
+        GrafDisp.getData().addAll(serie);
+        Scene scene = new Scene(GrafDisp, 500, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void geraGraficoCol(String titulo) {
+        // Inicializar o Gráfico de Colunas
+        ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
+        XYChart.Series serie = new XYChart.Series();
+        serie.setName(titulo);
+        double t = 0;
+        for (Informacoes inf : informacoes) {
+            if (titulo.equals(SERIE_PT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_ST)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_QT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_EA)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_ER)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_EAT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_FPT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_D)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
+            }
+            t++;
+        }
+        GrafDisp.getData().addAll(serie);
+        Scene scene = new Scene(GrafDisp, 500, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void geraGraficoLin(String titulo) {
+        // Inicializar o Gráfico de Linhas
+        ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
+        XYChart.Series serie = new XYChart.Series();
+        serie.setName(titulo);
+        double t = 0;
+        for (Informacoes inf : informacoes) {
+            if (titulo.equals(SERIE_PT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_ST)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_QT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_EA)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_ER)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_EAT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_FPT)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
+            } else if (titulo.equals(SERIE_D)) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
+            }
+            t++;
+        }
+        GrafDisp.getData().addAll(serie);
+        Scene scene = new Scene(GrafDisp, 500, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void setArquivo(File selectedFile) {
+        try {
+            informacoes = ler_Data(selectedFile);
+        } catch (IOException ex) {
+        }
     }
 
     @FXML

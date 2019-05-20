@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
@@ -273,13 +274,13 @@ public class FXMLGraficoController implements Initializable {
 
     void geraGraficoCol(String titulo) {
 
-        BarChart graficoBarra = new BarChart<>(new NumberAxis(), new NumberAxis());
+        BarChart<String, Number> graficoBarra = new BarChart(new CategoryAxis(), new NumberAxis());
         XYChart.Series serie = new XYChart.Series();
         serie.setName(titulo);
-        double t = 0;
+        double tempo = 0;
         
         for (Informacoes inf : informacoes) {
-
+            String t = String.valueOf(tempo);
             if (titulo.equals("SERIE_PT")) {
                 serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ST")) {
@@ -297,10 +298,11 @@ public class FXMLGraficoController implements Initializable {
             } else if (titulo.equals("SERIE_D")) {
                 serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
             }
-            t++;
+            tempo++;
         }
         graficoBarra.getData().addAll(serie);
-        Scene scene = new Scene(graficoBarra, 500, 400);
+        //graficoBarra.setPrefSize(2, 4);
+        Scene scene = new Scene(graficoBarra);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.showAndWait();
@@ -359,34 +361,3 @@ public class FXMLGraficoController implements Initializable {
         this.Principal = STAGE;
     }
 }
-/*
-ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
-        XYChart.Series serie = new XYChart.Series();
-        serie.setName(titulo);
-        double t = 0;
-        for (Informacoes inf : informacoes) {
-            if (titulo.equals("SERIE_PT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_ST")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_QT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_EA")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_ER")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_EAT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_FPT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
-            } else if (titulo.equals("SERIE_D")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
-            }
-            t++;
-        }
-        GrafDisp.getData().addAll(serie);
-        Scene scene = new Scene(GrafDisp, 500, 400);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.showAndWait();
- */

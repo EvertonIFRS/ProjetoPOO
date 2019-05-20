@@ -57,7 +57,7 @@ public class FXMLPrincipalController implements Initializable {
     private void FuncaoImport(ActionEvent e) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        fileChooser.setInitialDirectory(new File("C:\\Users\\Frederico\\Desktop\\Faculdade\\Eng. Algorithms\\P. O. O\\"));
+        //fileChooser.setInitialDirectory(new File("C:\\Users\\Frederico\\Desktop\\Faculdade\\Eng. Algorithms\\P. O. O\\"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text Files", "*.txt"));
         Stage stage = (Stage) ((Node) Import).getScene().getWindow();
@@ -117,6 +117,7 @@ public class FXMLPrincipalController implements Initializable {
     @FXML
     private void FuncaoGraf(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Stage STAGE = stage1;
         stage1.hide();
         if (selectedFile != null) {
             try {
@@ -124,7 +125,7 @@ public class FXMLPrincipalController implements Initializable {
                 Parent root = loader.load();
 
                 FXMLGraficoController controladorGrafico = loader.getController();
-                controladorGrafico.setPrincipal(stage1);
+                controladorGrafico.setPrincipal(STAGE);
                 controladorGrafico.setArquivo(selectedFile);
 
                 Scene scene = new Scene(root);

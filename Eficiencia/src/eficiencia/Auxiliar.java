@@ -19,8 +19,11 @@ import java.util.ArrayList;
  *
  * @author 05180176
  */
+
+// Criando a classe auxilair:
 public class Auxiliar {
 
+    // Criando o método para ler os Dados no formato que foi planejado pelo grupo:
     public static ArrayList<Informacoes> ler_Data(File arquivo) throws FileNotFoundException, IOException {
         ArrayList<Informacoes> linhas = new ArrayList();
 
@@ -38,6 +41,7 @@ public class Auxiliar {
         return linhas;
     }
 
+    // Criando o método para ler a informação(Username) dada pelo usuário:
     public static ArrayList<String> ler_Usuario(File arquivo) throws FileNotFoundException, IOException {
         ArrayList<String> linhas = new ArrayList();
 
@@ -54,6 +58,7 @@ public class Auxiliar {
         return linhas;
     }
 
+    // Criando o método para Gravar em um .txt o username e o password informados:
     public static void gravar(File arquivo, Informacoes info) throws FileNotFoundException, IOException {
 
         try (FileWriter fw = new FileWriter(arquivo, true);
@@ -67,7 +72,8 @@ public class Auxiliar {
 
         }
     }
-
+    
+    // Método escrever o nome username informado no arquivo .txt:
     public static void gravar_usuario(File arquivo, Usuario user) throws IOException {
         try (FileWriter fw = new FileWriter(arquivo, true);
                 BufferedWriter bw = new BufferedWriter(fw);
@@ -76,6 +82,7 @@ public class Auxiliar {
         }
     }
 
+    // Método para ler o user no arquivo para saber se é registrado ou não:
     public static ArrayList<Usuario> ler_usuarios(File arquivo) throws FileNotFoundException, IOException {
         ArrayList<Usuario> usuarios = new ArrayList();
         ArrayList<String> linhas = ler_Usuario(arquivo);
@@ -88,6 +95,7 @@ public class Auxiliar {
         return usuarios;
     }
 
+    // O método de Criptografia sendo implementado de fato para emcriptar as senhas:
     public static String MD5(String NewPassword) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");

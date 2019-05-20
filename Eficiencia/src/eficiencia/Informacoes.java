@@ -15,11 +15,15 @@ import javafx.beans.property.StringProperty;
  *
  * @author Frederico
  */
+
+// Criando a Class de Informações para leitura da nossa Matriz de Dados:
 public class Informacoes {
 
+    // Criando as Variáveis:
     private final StringProperty Data, Horario;
     private final DoubleProperty PT, ST, QT, FPT, EA, ER, EAT, D;
 
+    // Criando o vetor de Propriedades:
     public Informacoes(String[] v) {
         this.Data = new SimpleStringProperty(v[0]);
         this.Horario = new SimpleStringProperty(v[1]);
@@ -32,9 +36,8 @@ public class Informacoes {
         this.EAT = new SimpleDoubleProperty(Double.parseDouble(v[8]));
         this.D = new SimpleDoubleProperty(Double.parseDouble(v[9]));
     }
-
- 
-
+    
+    // Dando o retorno nas informações da Matriz com as suas propriedades necessárias:
     public StringProperty getData() {
         return Data;
     }

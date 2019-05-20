@@ -11,17 +11,23 @@ import java.util.Objects;
  *
  * @author 05180176
  */
+
+// Criando a Class Usuário:
 public class Usuario {
+    // Definindo as Variáveis Usadas:
     private String Login, Senha;
 
+    // Construtor Vazio:
     public Usuario() {
     }
 
+    // Construtor com as Variáveis:
     public Usuario(String Login, String Senha) {
         this.Login = Login;
         this.Senha = Senha;
     }
 
+    // Criando os Gets e Sets para trabalharmos com as Variáveis de Interesse:
     public String getLogin() {
         return Login;
     }
@@ -42,7 +48,8 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "Login=" + Login + ", Senha=" + Senha + '}';
     }
-
+    
+    // Criando o método para criptografar as Senhas:
     @Override
     public int hashCode() {
         int hash = 5;
@@ -51,6 +58,10 @@ public class Usuario {
         return hash;
     }
 
+    /* 
+       Criando o método que compara para saber se o usuário é ele mesmo e se a 
+       senha está correta:
+    */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

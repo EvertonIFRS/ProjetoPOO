@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +28,7 @@ import javafx.stage.Stage;
  *
  * @author 05180176
  */
+
 public class FXML_LoginController implements Initializable {
 
     @FXML
@@ -49,10 +48,13 @@ public class FXML_LoginController implements Initializable {
 
     }
 
+    // Declarando a Função Registro:
     @FXML
     public void FuncaoRegistro(ActionEvent e) {
+        // Fechando o Stage do Login
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage1.close();
+        // Criando o Loader do Registro:
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegisterIn.fxml"));
             Parent root = loader.load();
@@ -75,12 +77,16 @@ public class FXML_LoginController implements Initializable {
 
     }
 
+    // Declarando a Função Check:
     @FXML
     public void FuncaoCheck(ActionEvent e) {
+        // Se o username informado está vazio ou o password:
         if (User.getText().isEmpty() || Password.getText().isEmpty()) {
+            // Alerta de que há informações importantes a serem dadas:
             Alert dialogo = new Alert(Alert.AlertType.WARNING, "Campos Importantes estão em Branco!");
             dialogo.showAndWait();
         } else {
+            // Se não está vazios, deve-se testar se estão registrados:
             try {
                 Usuario user = new Usuario(User.getText(), Password.getText());
                 ArrayList<Usuario> users = Auxiliar.ler_usuarios(new File("usuarios.txt"));
@@ -89,12 +95,16 @@ public class FXML_LoginController implements Initializable {
 
                 for (Usuario u : users) {
                     if (u.getLogin().equals(user.getLogin())) {
+                        // Username informado está na lista de Registrados,
+                        // e a senha codificada confere, então:
                         encontrou = true;
                         if (MD5(Password.getText()).equals(u.getSenha())) {
+                            // Fecha o Stage do Login:
                             Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
                             stage1.close();
                             senha_correta = true;
 
+                            // Chama o Loader do Principal:
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPrincipal.fxml"));
                             Parent root = loader.load();
 
@@ -113,9 +123,11 @@ public class FXML_LoginController implements Initializable {
                         }
                     }
                 }
+                // Se não estão registrados, Alerta de Usuário não registrado:
                 if (!encontrou) {
                     Alert dialogo = new Alert(Alert.AlertType.WARNING, "Usuário Inexistente, se Registre antes!");
                     dialogo.showAndWait();
+                    // Chama o Loader do Registro:
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("FXMLRegisterIn.fxml"));
 
@@ -128,7 +140,9 @@ public class FXML_LoginController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } else {
+                    // Se usuário está registrado porém com senha errada:
                     if (!senha_correta) {
+                        // Alerta de Senha Incorreta:
                         Alert dialogo = new Alert(Alert.AlertType.WARNING, "Senha incorreta. Verifique sua senha!");
                         dialogo.showAndWait();
                     }
@@ -140,6 +154,7 @@ public class FXML_LoginController implements Initializable {
         }
     }
 
+    // Criando Class Usuário com os Atributos cabivéis:
     void setUsuario(String login, String senha) {
         User.setText(login);
         Password.setText(senha);

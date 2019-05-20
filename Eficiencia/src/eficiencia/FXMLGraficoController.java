@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
@@ -159,7 +159,7 @@ public class FXMLGraficoController implements Initializable {
     ArrayList<Informacoes> informacoes;
 
     File selectedFile;
-    
+
     Stage STAGE;
 
     @FXML
@@ -238,10 +238,12 @@ public class FXMLGraficoController implements Initializable {
     }
 
     void geraGraficoDisp(String titulo) {
+        
         ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
         XYChart.Series serie = new XYChart.Series();
         serie.setName(titulo);
         double t = 0;
+        
         for (Informacoes inf : informacoes) {
             if (titulo.equals("SERIE_PT")) {
                 serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
@@ -270,66 +272,70 @@ public class FXMLGraficoController implements Initializable {
     }
 
     void geraGraficoCol(String titulo) {
-        // Inicializar o Gráfico de Colunas
-        ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
+
+        BarChart graficoBarra = new BarChart<>(new NumberAxis(), new NumberAxis());
         XYChart.Series serie = new XYChart.Series();
         serie.setName(titulo);
         double t = 0;
+        
         for (Informacoes inf : informacoes) {
+
             if (titulo.equals("SERIE_PT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ST")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_QT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_EA")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ER")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_EAT")) {
                 serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_FPT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_D")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
+                serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
             }
             t++;
         }
-        GrafDisp.getData().addAll(serie);
-        Scene scene = new Scene(GrafDisp, 500, 400);
+        graficoBarra.getData().addAll(serie);
+        Scene scene = new Scene(graficoBarra, 500, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.showAndWait();
     }
 
     void geraGraficoLin(String titulo) {
-        // Inicializar o Gráfico de Linhas
-        ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
+
+        LineChart graficoLinha = new LineChart<>(new NumberAxis(), new NumberAxis());
         XYChart.Series serie = new XYChart.Series();
         serie.setName(titulo);
         double t = 0;
+
         for (Informacoes inf : informacoes) {
             if (titulo.equals("SERIE_PT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ST")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_QT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_EA")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ER")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_EAT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_FPT")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_D")) {
-                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
-            }
+                serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
+            }            
             t++;
         }
-        GrafDisp.getData().addAll(serie);
-        Scene scene = new Scene(GrafDisp, 500, 400);
+
+        graficoLinha.getData().addAll(serie);
+        Scene scene = new Scene(graficoLinha, 500, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.showAndWait();
@@ -353,3 +359,34 @@ public class FXMLGraficoController implements Initializable {
         this.Principal = STAGE;
     }
 }
+/*
+ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
+        XYChart.Series serie = new XYChart.Series();
+        serie.setName(titulo);
+        double t = 0;
+        for (Informacoes inf : informacoes) {
+            if (titulo.equals("SERIE_PT")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_ST")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_QT")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getQT().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_EA")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEA().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_ER")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getER().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_EAT")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getEAT().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_FPT")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getFPT().get().replace(",", "."))));
+            } else if (titulo.equals("SERIE_D")) {
+                serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getD().get().replace(",", "."))));
+            }
+            t++;
+        }
+        GrafDisp.getData().addAll(serie);
+        Scene scene = new Scene(GrafDisp, 500, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.showAndWait();
+ */

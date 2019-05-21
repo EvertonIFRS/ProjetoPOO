@@ -39,12 +39,15 @@ public class FXMLGraficoController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    // Criando as Variáveis Uteis:
+    // Criando o Stage Estático do Principal:
     private Stage Principal;
     String flag_G = "G1", flag_V = "PT";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        // Setando todas as imagens usadas no fxml do Gráfico:
         Image image1 = new Image(FXMLGraficoController.class.getResourceAsStream("dispersao.jpg"));
         Image image3 = new Image(FXMLGraficoController.class.getResourceAsStream("colunas.jpg"));
         Image image4 = new Image(FXMLGraficoController.class.getResourceAsStream("linhas.jpg"));
@@ -53,6 +56,7 @@ public class FXMLGraficoController implements Initializable {
         image03.setImage(image3);
         image04.setImage(image4);
 
+        // Criando a forma usada para evitar que seja escolido mais de um Gráfico ou mais de uma Variável:
         G1.setOnAction(e -> {
             G3.setSelected(!G1.isSelected());
             G4.setSelected(!G1.isSelected());
@@ -151,6 +155,7 @@ public class FXMLGraficoController implements Initializable {
         });
     }
 
+    // Declarando as Variáveis:
     @FXML
     private ImageView image01, image03, image04;
 
@@ -163,10 +168,14 @@ public class FXMLGraficoController implements Initializable {
 
     Stage STAGE;
 
+    // Declaração da Função Gerar:
     @FXML
     private void FuncaoGerar(ActionEvent e) throws IOException {
+        // Teste para saber qual Gráfico foi escolhido e qual Variável foi escolhida:
         if (G1.isSelected()) {
             if (PT.isSelected()) {
+                // Chamando a Função para gerar o Gráfico de Dispersão,
+                // passando o Titulo do gráfico:
                 geraGraficoDisp("SERIE_PT");
             } else if (ST.isSelected()) {
                 geraGraficoDisp("SERIE_ST");
@@ -183,6 +192,7 @@ public class FXMLGraficoController implements Initializable {
             } else if (D.isSelected()) {
                 geraGraficoDisp("SERIE_D");
             } else {
+                // Alerta para quando o usuário não tiver escolhido nenhuma Variável:
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("Variável não Selecionada!");
                 dialogo.showAndWait();
@@ -232,12 +242,14 @@ public class FXMLGraficoController implements Initializable {
                 dialogo.showAndWait();
             }
         } else {
+            // Alerta para quando o usuário não tiver escolhido nenhum Gráfico:
             Alert dialogo = new Alert(Alert.AlertType.WARNING);
             dialogo.setContentText("Grafico não Selecionada!");
             dialogo.showAndWait();
         }
     }
 
+    // Declarando a Função que gera o Gráfico de Dispersão:
     void geraGraficoDisp(String titulo) {
         
         ScatterChart<Number, Number> GrafDisp = new ScatterChart(new NumberAxis(), new NumberAxis());
@@ -247,6 +259,7 @@ public class FXMLGraficoController implements Initializable {
         
         for (Informacoes inf : informacoes) {
             if (titulo.equals("SERIE_PT")) {
+                // Criando o vetor de dados para plotar no gráfico com a Variável escolhida:
                 serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ST")) {
                 serie.getData().add(new XYChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
@@ -272,6 +285,7 @@ public class FXMLGraficoController implements Initializable {
         stage.showAndWait();
     }
 
+    // Declaração da Função que gera o Gráfico de COlunas:
     void geraGraficoCol(String titulo) {
 
         BarChart<String, Number> graficoBarra = new BarChart(new CategoryAxis(), new NumberAxis());
@@ -282,6 +296,7 @@ public class FXMLGraficoController implements Initializable {
         for (Informacoes inf : informacoes) {
             String t = String.valueOf(tempo);
             if (titulo.equals("SERIE_PT")) {
+                // Criando o vetor de dados para plotar no gráfico com a Variável escolhida:
                 serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ST")) {
                 serie.getData().add(new BarChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
@@ -308,6 +323,7 @@ public class FXMLGraficoController implements Initializable {
         stage.showAndWait();
     }
 
+    // Criando a Função que gera o Gráfico de Linhas:
     void geraGraficoLin(String titulo) {
 
         LineChart graficoLinha = new LineChart<>(new NumberAxis(), new NumberAxis());
@@ -317,6 +333,7 @@ public class FXMLGraficoController implements Initializable {
 
         for (Informacoes inf : informacoes) {
             if (titulo.equals("SERIE_PT")) {
+                // Criando o vetor de dados para plotar no gráfico com a Variável escolhida:
                 serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getPT().get().replace(",", "."))));
             } else if (titulo.equals("SERIE_ST")) {
                 serie.getData().add(new LineChart.Data(t, Double.parseDouble(inf.getST().get().replace(",", "."))));
@@ -343,6 +360,7 @@ public class FXMLGraficoController implements Initializable {
         stage.showAndWait();
     }
 
+    // Função para setar o Arquivo Escolhido:
     void setArquivo(File selectedFile) {
         try {
             informacoes = ler_Data(selectedFile);
@@ -350,6 +368,7 @@ public class FXMLGraficoController implements Initializable {
         }
     }
 
+    // Declaração a Função Voltar:
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();
@@ -357,6 +376,7 @@ public class FXMLGraficoController implements Initializable {
         stage1.hide();
     }
 
+    // Criando a Classe para manter o Stage Principal:
     void setPrincipal(Stage STAGE) {
         this.Principal = STAGE;
     }

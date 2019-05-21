@@ -34,11 +34,13 @@ public class FXMLImprimirController implements Initializable {
      * Initializes the controller class.
      */
     
+    // Declarando todas as Variáveis e Itens usados no fxml:
     private Stage Principal;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        // Setando a Imagem usada no fxml do Imprimir:
         Image Imagem = new Image(FXMLImprimirController.class.getResourceAsStream("RGE.jpg"));
         
         Imagem_Boleto.setImage(Imagem);  
@@ -50,6 +52,7 @@ public class FXMLImprimirController implements Initializable {
     @FXML
     private TextField Text01, Text02, Text03;
 
+    // Declarando a Função para gerar o arquivo para ser impresso:
     @FXML
     private void FuncaoPrint(ActionEvent e) {
         Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -71,6 +74,7 @@ public class FXMLImprimirController implements Initializable {
         }
     }
 
+    // Setando as Informações importantes a partir do selectedFile escolhido pelo User:
     void setArquivo(File selectedFile) {
         try {
             ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
@@ -78,12 +82,14 @@ public class FXMLImprimirController implements Initializable {
             int i = 0;
             float X = 0, SomaP = 0, SomaD = 0, MedFP = 0;
             
+            // Calculando os Somátorios e a média das informações escolhidas para o Trabalho:
             for (Informacoes inf : informacoes) {
                 i += 1;
                 SomaP += Float.parseFloat(inf.getPT().getValue().replaceAll(",", "."));
                 SomaD += Float.parseFloat(inf.getD().getValue().replaceAll(",", "."));
                 X += Float.parseFloat(inf.getFPT().getValue().replaceAll(",", "."));
             }   
+            // Fazendo a Média e apresentando os valores encontrados:
             MedFP = X/i;
             Text01.setText(String.valueOf(SomaP));
             Text02.setText(String.valueOf(MedFP));
@@ -93,6 +99,7 @@ public class FXMLImprimirController implements Initializable {
         }
     }
     
+    // Declarando a Função Voltar com Stage do Principal Estático:
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();
@@ -100,6 +107,7 @@ public class FXMLImprimirController implements Initializable {
         stage1.close();
     }
 
+    // Classe do Stage do Principal Estático:
     void setPrincipal(Stage stage1) {
         this.Principal = stage1;
     }

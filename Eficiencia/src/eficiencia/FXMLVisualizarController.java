@@ -26,12 +26,13 @@ import javafx.stage.Stage;
  *
  * @author 05180176
  */
-
+// Declarando o Controller do Visualizar:
 public class FXMLVisualizarController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
+    // Declarando as Variáveis Utilizadas:
     @FXML
     private TableView<Informacoes> InfoTable;
     @FXML
@@ -55,11 +56,14 @@ public class FXMLVisualizarController implements Initializable {
     @FXML
     private TableColumn<Informacoes, String> D;
 
+    // Criando a Tabela:
     private final ObservableList<Informacoes> InfoData = FXCollections.observableArrayList();
+    // Criando o Stage estático do Principal:
     private Stage Principal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Teste para ver se a tabela está vazia:
         if (InfoTable != null) {
             InfoTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
             Data.setCellValueFactory(cellData -> cellData.getValue().getData());
@@ -76,6 +80,7 @@ public class FXMLVisualizarController implements Initializable {
         }
     }
 
+    // Criando a Função para Setar o Arquivo escolido:
     void setArquivo(File selectedFile) throws IOException {
         if (selectedFile.exists()) {
             ArrayList<Informacoes> dados = Auxiliar.ler_Data(selectedFile);
@@ -84,12 +89,14 @@ public class FXMLVisualizarController implements Initializable {
             InfoTable.setItems(InfoData);
             
         } else {
+            // Se o Arquivo não existe:
             Alert dialogo = new Alert(Alert.AlertType.ERROR);
             dialogo.setContentText("Arquivo de dados energéticos não encontrado!");
             dialogo.showAndWait();
         }
     }
     
+    // Declaração da Função Voltar:
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();
@@ -97,6 +104,7 @@ public class FXMLVisualizarController implements Initializable {
         stage1.close();
     }
 
+    // Criando a Função setPrincipal:
     void setPrincipal(Stage stage1) {
        this.Principal = stage1;
     }

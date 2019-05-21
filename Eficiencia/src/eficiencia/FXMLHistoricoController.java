@@ -38,6 +38,7 @@ public class FXMLHistoricoController implements Initializable {
 
     }
 
+    // Declaração dos Elementos Utilizados:
     @FXML
     private TextField PT_Min, PT_Max, ST_Min, ST_Max;
 
@@ -50,13 +51,17 @@ public class FXMLHistoricoController implements Initializable {
     @FXML
     private DatePicker datepicker;
 
+    // Criando a Função para Setar o Arquivo Escolhido pelo Usuário:
     void setArquivo(File selectedFile) {
         try {
             ArrayList<Informacoes> informacoes = ler_Data(selectedFile);
 
+            // Criando as Variáveis usadas no método:
             float MAXPT = 0, MAXST = 0, MAXQT = 0, MAXEA = 0, MAXER = 0, MAXFP = 0;
             float MINPT = 1000, MINST = 1000, MINQT = 1000, MINEA = 1000, MINER = 1000, MINFP = 1000;
 
+            // for(para) para percorrer todos os elementos de cada coluna do Arquivo, 
+            // e fornecer o Máximo e o Mínimo de cada Variável:
             for (Informacoes inf : informacoes) {
                 if (Float.parseFloat(inf.getPT().getValue().replaceAll(",", ".")) > MAXPT) {
                     MAXPT = Float.parseFloat(inf.getPT().getValue().replaceAll(",", "."));
@@ -90,6 +95,7 @@ public class FXMLHistoricoController implements Initializable {
                 }
             }
 
+            // Apresentando os Valores de Minímo e Máximo encontrados no Arquivo:
             PT_Max.setText(String.valueOf(MAXPT));
             PT_Min.setText(String.valueOf(MINPT));
             ST_Max.setText(String.valueOf(MAXST));
@@ -103,6 +109,8 @@ public class FXMLHistoricoController implements Initializable {
             FPT_Max.setText(String.valueOf(MAXFP));
             FPT_Min.setText(String.valueOf(MINFP));
 
+            // Teste para informar o Usuário se o minímo valor de Fator de Potência, 
+            // está inferior ao menor permitido pela conssecionária:
             if (MINFP < 0.8) {
                 Alert dialogo = new Alert(Alert.AlertType.WARNING);
                 dialogo.setContentText("O menor Valor do Fator de Potência Encontrado\n"
@@ -121,7 +129,8 @@ public class FXMLHistoricoController implements Initializable {
         LocalDate date = datepicker.getValue();
 
     }
-
+    
+    // Criando o método de VOltar com o Principal Estático:
     @FXML
     private void FuncaoVoltar(ActionEvent e) {
         Principal.show();
@@ -129,6 +138,7 @@ public class FXMLHistoricoController implements Initializable {
         stage1.close();
     }
 
+    // Class para manter o Stage Principal Estático:
     void setPrincipal(Stage stage1) {
         this.Principal = stage1;
     }

@@ -285,14 +285,6 @@ public class FXMLPrincipalController implements Initializable {
         }
     }
 
-    // Declaração da Função DataPicker:
-    @FXML
-    private void FuncaoDate(ActionEvent e) {
-
-        LocalDate date = datepicker.getValue();
-
-    }
-
     // Declaração da Função Voltar:
     @FXML
     private void FuncaoVoltar(ActionEvent e) {

@@ -122,13 +122,6 @@ public class FXMLHistoricoController implements Initializable {
             System.out.println("ERRO: " + ex);
         }
     }
-
-    @FXML
-    private void FuncaoDate(ActionEvent e) {
-
-        LocalDate date = datepicker.getValue();
-
-    }
     
     // Criando o método de VOltar com o Principal Estático:
     @FXML
